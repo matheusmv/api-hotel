@@ -45,4 +45,18 @@ public class ClienteResource {
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody ClienteDTO objDto, @PathVariable String id) {
+		Cliente obj = clienteService.fromDTO(objDto);
+		obj.setId(id);
+		obj = clienteService.update(obj);
+		return ResponseEntity.noContent().build();
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable String id) {
+		clienteService.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }

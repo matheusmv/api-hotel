@@ -30,6 +30,26 @@ public class ClienteService {
 		return clienteRepository.insert(obj);
 	}
 
+	public Cliente update(Cliente obj) {
+		Cliente newObj = findById(obj.getId());
+		updateDate(newObj, obj);
+		return clienteRepository.save(newObj);
+	}
+
+	private void updateDate(Cliente newObj, Cliente obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
+		newObj.setCpf(obj.getCpf());
+		newObj.setRg(obj.getRg());
+		newObj.setEndereco(obj.getEndereco());
+		newObj.setTelefone(obj.getTelefone());
+	}
+
+	public void delete(String id) {
+		findById(id);
+		clienteRepository.deleteById(id);
+	}
+
 	public Cliente fromDTO(ClienteDTO obj) {
 		return new Cliente(obj.getId(), obj.getNome(), obj.getEmail(), obj.getCpf(), obj.getRg(), obj.getEndereco(),
 				obj.getTelefone());
