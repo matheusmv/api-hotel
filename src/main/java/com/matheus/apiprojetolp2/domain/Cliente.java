@@ -20,7 +20,7 @@ public class Cliente implements Serializable {
 	private String cpf;
 	private String rg;
 	private EnderecoDTO endereco;
-	private TelefoneDTO telefone;	
+	private TelefoneDTO telefone;
 	
 	public Cliente() {
 		
