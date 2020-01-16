@@ -12,7 +12,7 @@ import com.matheus.apiprojetolp2.dto.TelefoneDTO;
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private String nome;
@@ -21,12 +21,13 @@ public class Cliente implements Serializable {
 	private String rg;
 	private EnderecoDTO endereco;
 	private TelefoneDTO telefone;
-	
+
 	public Cliente() {
-		
+
 	}
 
-	public Cliente(String id, String nome, String email, String cpf, String rg, EnderecoDTO endereco, TelefoneDTO telefone) {
+	public Cliente(String id, String nome, String email, String cpf, String rg, EnderecoDTO endereco,
+			TelefoneDTO telefone) {
 		super();
 		this.id = id;
 		this.nome = nome;

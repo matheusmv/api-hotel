@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class TelefoneDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String codigo;
 	private String ddd;
 	private String numero;
-	
+
 	public TelefoneDTO() {
-		
+
 	}
 
 	public TelefoneDTO(String codigo, String ddd, String numero) {

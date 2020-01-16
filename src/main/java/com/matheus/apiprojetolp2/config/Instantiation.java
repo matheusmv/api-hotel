@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Instantiation implements CommandLineRunner {
 
-	//@Autowired
-	//private ClienteRepository clienteRepository;
+	// @Autowired
+	// private ClienteRepository clienteRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+
 	}
 }

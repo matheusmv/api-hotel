@@ -2,10 +2,10 @@ package com.matheus.apiprojetolp2.dto;
 
 import java.io.Serializable;
 
-public class EnderecoDTO implements Serializable{
+public class EnderecoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String logradouro;
 	private String numero;
 	private String complemento;
@@ -13,9 +13,9 @@ public class EnderecoDTO implements Serializable{
 	private String cep;
 	private String cidade;
 	private String estado;
-	
+
 	public EnderecoDTO() {
-		
+
 	}
 
 	public EnderecoDTO(String logradouro, String numero, String complemento, String bairro, String cep, String cidade,
