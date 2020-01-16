@@ -5,6 +5,9 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.matheus.apiprojetolp2.dto.EnderecoDTO;
+import com.matheus.apiprojetolp2.dto.TelefoneDTO;
+
 @Document(collection = "cliente")
 public class Cliente implements Serializable {
 
@@ -16,18 +19,22 @@ public class Cliente implements Serializable {
 	private String email;
 	private String cpf;
 	private String rg;
+	private EnderecoDTO endereco;
+	private TelefoneDTO telefone;	
 	
 	public Cliente() {
 		
 	}
 
-	public Cliente(String id, String nome, String email, String cpf, String rg) {
+	public Cliente(String id, String nome, String email, String cpf, String rg, EnderecoDTO endereco, TelefoneDTO telefone) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.rg = rg;
+		this.endereco = endereco;
+		this.telefone = telefone;
 	}
 
 	public String getId() {
@@ -68,6 +75,22 @@ public class Cliente implements Serializable {
 
 	public void setRg(String rg) {
 		this.rg = rg;
+	}
+
+	public TelefoneDTO getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(TelefoneDTO telefone) {
+		this.telefone = telefone;
+	}
+
+	public EnderecoDTO getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(EnderecoDTO endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override

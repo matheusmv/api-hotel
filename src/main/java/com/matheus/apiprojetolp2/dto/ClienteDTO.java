@@ -11,6 +11,8 @@ public class ClienteDTO implements Serializable {
 	private String id;
 	private String name;
 	private String email;
+	private EnderecoDTO endereco;
+	private TelefoneDTO numero;
 	
 	public ClienteDTO() {
 		
@@ -20,6 +22,8 @@ public class ClienteDTO implements Serializable {
 		this.id = obj.getId();
 		this.name = obj.getNome();
 		this.email = obj.getEmail();
+		this.endereco = obj.getEndereco();
+		this.numero = obj.getTelefone();
 	}
 
 	public String getId() {
@@ -44,5 +48,21 @@ public class ClienteDTO implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public TelefoneDTO getNumero() {
+		return numero;
+	}
+
+	public void setNumero(TelefoneDTO numero) {
+		this.numero = numero;
+	}
+
+	public EnderecoDTO getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(EnderecoDTO endereco) {
+		this.endereco = endereco;
 	}
 }
