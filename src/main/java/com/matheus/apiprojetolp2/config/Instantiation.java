@@ -14,8 +14,10 @@ import com.matheus.apiprojetolp2.domain.Quarto;
 import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
 import com.matheus.apiprojetolp2.dto.CategoriaDTO;
 import com.matheus.apiprojetolp2.dto.EnderecoDTO;
+import com.matheus.apiprojetolp2.dto.TarifaDTO;
 import com.matheus.apiprojetolp2.dto.TelefoneDTO;
 import com.matheus.apiprojetolp2.dto.enums.TipoCategoria;
+import com.matheus.apiprojetolp2.dto.enums.TipoServico;
 import com.matheus.apiprojetolp2.repositories.ClienteRepository;
 import com.matheus.apiprojetolp2.repositories.HospedagemRepository;
 import com.matheus.apiprojetolp2.repositories.QuartoRepository;
@@ -69,5 +71,13 @@ public class Instantiation implements CommandLineRunner {
 		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019"),sdf.parse("07/12/2019"));
 		
 		hospedagemRespository.saveAll(Arrays.asList(h1, h2, h3));
+		
+		TarifaDTO t1 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
+		TarifaDTO t2 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
+		TarifaDTO t3 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
+
+		h1.getTarifas().addAll(Arrays.asList(t1, t2, t3));
+		
+		hospedagemRespository.save(h1);
 	}
 }

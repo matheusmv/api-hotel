@@ -1,9 +1,14 @@
 package com.matheus.apiprojetolp2.dto;
 
+import java.io.Serializable;
+
 import com.matheus.apiprojetolp2.dto.enums.TipoCategoria;
 
-public class CategoriaDTO {
+public class CategoriaDTO implements Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
+	
 	private Integer tipoCategoria;
 
 	public CategoriaDTO() {
