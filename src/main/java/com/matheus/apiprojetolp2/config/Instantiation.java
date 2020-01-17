@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Configuration;
 import com.matheus.apiprojetolp2.domain.Cliente;
 import com.matheus.apiprojetolp2.domain.Quarto;
 import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
+import com.matheus.apiprojetolp2.dto.CategoriaDTO;
 import com.matheus.apiprojetolp2.dto.EnderecoDTO;
 import com.matheus.apiprojetolp2.dto.TelefoneDTO;
+import com.matheus.apiprojetolp2.dto.enums.TipoCategoria;
 import com.matheus.apiprojetolp2.repositories.ClienteRepository;
 import com.matheus.apiprojetolp2.repositories.QuartoRepository;
 
@@ -43,10 +45,11 @@ public class Instantiation implements CommandLineRunner {
 
 		clienteRepository.saveAll(Arrays.asList(jose, maria, alex));
 
-		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.DISPONIVEL);
-		Quarto num2 = new Quarto(null, 150.00, StatusDoQuarto.OCUPADO);
-		Quarto num3 = new Quarto(null, 300.00, StatusDoQuarto.RESERVADO);
-		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.MANUTENCAO);
+		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.DISPONIVEL, new CategoriaDTO(TipoCategoria.MASTER));
+		Quarto num2 = new Quarto(null, 150.00, StatusDoQuarto.OCUPADO, new CategoriaDTO(TipoCategoria.PADRAO));
+		Quarto num3 = new Quarto(null, 300.00, StatusDoQuarto.RESERVADO,
+				new CategoriaDTO(TipoCategoria.MASTER_SUPERTIOR));
+		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.MANUTENCAO, new CategoriaDTO(TipoCategoria.LUXO));
 
 		quartoRespository.saveAll(Arrays.asList(num1, num2, num3, num4));
 	}

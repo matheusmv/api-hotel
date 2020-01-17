@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
+import com.matheus.apiprojetolp2.dto.CategoriaDTO;
 
 @Document(collection = "quarto")
 public class Quarto implements Serializable {
@@ -16,16 +17,18 @@ public class Quarto implements Serializable {
 	private String id;
 	private Double custo;
 	private Integer statusDoQuarto;
+	private CategoriaDTO tipoCategoria;
 
 	public Quarto() {
 
 	}
 
-	public Quarto(String id, Double custo, StatusDoQuarto status) {
+	public Quarto(String id, Double custo, StatusDoQuarto status, CategoriaDTO categoria) {
 		super();
 		this.id = id;
 		this.custo = custo;
 		setStatus(status);
+		this.tipoCategoria = categoria;
 	}
 
 	public String getId() {
@@ -52,6 +55,14 @@ public class Quarto implements Serializable {
 		if (status != null) {
 			this.statusDoQuarto = status.getCodigo();
 		}
+	}
+
+	public CategoriaDTO getTipoCategoria() {
+		return tipoCategoria;
+	}
+
+	public void setTipoCategoria(CategoriaDTO tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
 	}
 
 	@Override
