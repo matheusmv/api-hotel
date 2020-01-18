@@ -3,11 +3,14 @@ package com.matheus.apiprojetolp2.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.matheus.apiprojetolp2.dto.QuartoDTO;
 import com.matheus.apiprojetolp2.dto.TarifaDTO;
 
 @Document(collection = "hospedagem")
@@ -19,6 +22,8 @@ public class Hospedagem implements Serializable {
 	private String id;
 	private Date dataCheckIn;
 	private Date dataCheckOut;
+
+	private Set<QuartoDTO> quartos = new HashSet<>();
 
 	private List<TarifaDTO> tarifas = new ArrayList<>();
 
@@ -55,6 +60,14 @@ public class Hospedagem implements Serializable {
 
 	public void setDataCheckOut(Date dataCheckOut) {
 		this.dataCheckOut = dataCheckOut;
+	}
+
+	public Set<QuartoDTO> getQuartos() {
+		return quartos;
+	}
+
+	public void setQuartos(Set<QuartoDTO> quartos) {
+		this.quartos = quartos;
 	}
 
 	public List<TarifaDTO> getTarifas() {

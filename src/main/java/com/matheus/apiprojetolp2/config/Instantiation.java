@@ -14,6 +14,7 @@ import com.matheus.apiprojetolp2.domain.Quarto;
 import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
 import com.matheus.apiprojetolp2.dto.CategoriaDTO;
 import com.matheus.apiprojetolp2.dto.EnderecoDTO;
+import com.matheus.apiprojetolp2.dto.QuartoDTO;
 import com.matheus.apiprojetolp2.dto.TarifaDTO;
 import com.matheus.apiprojetolp2.dto.TelefoneDTO;
 import com.matheus.apiprojetolp2.dto.enums.TipoCategoria;
@@ -30,7 +31,7 @@ public class Instantiation implements CommandLineRunner {
 
 	@Autowired
 	private QuartoRepository quartoRespository;
-	
+
 	@Autowired
 	private HospedagemRepository hospedagemRespository;
 
@@ -39,7 +40,7 @@ public class Instantiation implements CommandLineRunner {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-		
+
 		clienteRepository.deleteAll();
 		quartoRespository.deleteAll();
 		hospedagemRespository.deleteAll();
@@ -65,19 +66,23 @@ public class Instantiation implements CommandLineRunner {
 		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.MANUTENCAO, new CategoriaDTO(TipoCategoria.LUXO));
 
 		quartoRespository.saveAll(Arrays.asList(num1, num2, num3, num4));
-		
-		Hospedagem h1 = new Hospedagem(null, sdf.parse("20/06/2019"),sdf.parse("27/06/2019"));
-		Hospedagem h2 = new Hospedagem(null, sdf.parse("01/08/2019"),sdf.parse("17/08/2019"));
-		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019"),sdf.parse("07/12/2019"));
-		
+
+		Hospedagem h1 = new Hospedagem(null, sdf.parse("20/06/2019"), sdf.parse("27/06/2019"));
+		Hospedagem h2 = new Hospedagem(null, sdf.parse("01/08/2019"), sdf.parse("17/08/2019"));
+		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019"), sdf.parse("07/12/2019"));
+
+		h1.getQuartos().add(new QuartoDTO(num1));
+		h2.getQuartos().add(new QuartoDTO(num4));
+		h3.getQuartos().add(new QuartoDTO(num2));
+
 		hospedagemRespository.saveAll(Arrays.asList(h1, h2, h3));
-		
+
 		TarifaDTO t1 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
 		TarifaDTO t2 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
 		TarifaDTO t3 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
 
 		h1.getTarifas().addAll(Arrays.asList(t1, t2, t3));
-		
+
 		hospedagemRespository.save(h1);
 	}
 }
