@@ -10,6 +10,7 @@ import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
 import com.matheus.apiprojetolp2.dto.QuartoDTO;
 import com.matheus.apiprojetolp2.dto.TarifaDTO;
 
@@ -23,6 +24,8 @@ public class Hospedagem implements Serializable {
 	private Date dataCheckIn;
 	private Date dataCheckOut;
 
+	private ClienteSimplesDTO cliente;
+
 	private Set<QuartoDTO> quartos = new HashSet<>();
 
 	private List<TarifaDTO> tarifas = new ArrayList<>();
@@ -31,11 +34,12 @@ public class Hospedagem implements Serializable {
 
 	}
 
-	public Hospedagem(String id, Date dataCheckIn, Date dataCheckOut) {
+	public Hospedagem(String id, Date dataCheckIn, Date dataCheckOut, ClienteSimplesDTO cliente) {
 		super();
 		this.id = id;
 		this.dataCheckIn = dataCheckIn;
 		this.dataCheckOut = dataCheckOut;
+		this.cliente = cliente;
 	}
 
 	public String getId() {
@@ -60,6 +64,14 @@ public class Hospedagem implements Serializable {
 
 	public void setDataCheckOut(Date dataCheckOut) {
 		this.dataCheckOut = dataCheckOut;
+	}
+
+	public ClienteSimplesDTO getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(ClienteSimplesDTO cliente) {
+		this.cliente = cliente;
 	}
 
 	public Set<QuartoDTO> getQuartos() {

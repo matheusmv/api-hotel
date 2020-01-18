@@ -13,6 +13,7 @@ import com.matheus.apiprojetolp2.domain.Hospedagem;
 import com.matheus.apiprojetolp2.domain.Quarto;
 import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
 import com.matheus.apiprojetolp2.dto.CategoriaDTO;
+import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
 import com.matheus.apiprojetolp2.dto.EnderecoDTO;
 import com.matheus.apiprojetolp2.dto.QuartoDTO;
 import com.matheus.apiprojetolp2.dto.TarifaDTO;
@@ -67,9 +68,12 @@ public class Instantiation implements CommandLineRunner {
 
 		quartoRespository.saveAll(Arrays.asList(num1, num2, num3, num4));
 
-		Hospedagem h1 = new Hospedagem(null, sdf.parse("20/06/2019"), sdf.parse("27/06/2019"));
-		Hospedagem h2 = new Hospedagem(null, sdf.parse("01/08/2019"), sdf.parse("17/08/2019"));
-		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019"), sdf.parse("07/12/2019"));
+		Hospedagem h1 = new Hospedagem(null, sdf.parse("20/06/2019"), sdf.parse("27/06/2019"),
+				new ClienteSimplesDTO(jose));
+		Hospedagem h2 = new Hospedagem(null, sdf.parse("01/08/2019"), sdf.parse("17/08/2019"),
+				new ClienteSimplesDTO(maria));
+		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019"), sdf.parse("07/12/2019"),
+				new ClienteSimplesDTO(alex));
 
 		h1.getQuartos().add(new QuartoDTO(num1));
 		h2.getQuartos().add(new QuartoDTO(num4));

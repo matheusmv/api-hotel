@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matheus.apiprojetolp2.domain.Cliente;
 import com.matheus.apiprojetolp2.dto.ClienteDTO;
+import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
 import com.matheus.apiprojetolp2.services.ClienteService;
 
 @RestController
@@ -25,9 +26,10 @@ public class ClienteResource {
 	private ClienteService clienteService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<ClienteDTO>> findAll() {
+	public ResponseEntity<List<ClienteSimplesDTO>> findAll() {
 		List<Cliente> clientes = clienteService.findAll();
-		List<ClienteDTO> clientesDTO = clientes.stream().map(x -> new ClienteDTO(x)).collect(Collectors.toList());
+		List<ClienteSimplesDTO> clientesDTO = clientes.stream().map(x -> new ClienteSimplesDTO(x))
+				.collect(Collectors.toList());
 		return ResponseEntity.ok().body(clientesDTO);
 	}
 
