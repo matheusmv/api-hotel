@@ -2,6 +2,7 @@ package com.matheus.apiprojetolp2.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.matheus.apiprojetolp2.domain.Cliente;
 import com.matheus.apiprojetolp2.dto.ClienteDTO;
 import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
+import com.matheus.apiprojetolp2.dto.HospedagemDTO;
 import com.matheus.apiprojetolp2.services.ClienteService;
 
 @RestController
@@ -60,5 +62,11 @@ public class ClienteResource {
 	public ResponseEntity<Void> delete(@PathVariable String id) {
 		clienteService.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@RequestMapping(value = "/{id}/hospedagens", method = RequestMethod.GET)
+	public ResponseEntity<Set<HospedagemDTO>> findHospedagens(@PathVariable String id) {
+		Cliente obj = clienteService.findById(id);
+		return ResponseEntity.ok().body(obj.getHospedagens());
 	}
 }

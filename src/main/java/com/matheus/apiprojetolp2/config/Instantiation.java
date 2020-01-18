@@ -15,6 +15,7 @@ import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
 import com.matheus.apiprojetolp2.dto.CategoriaDTO;
 import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
 import com.matheus.apiprojetolp2.dto.EnderecoDTO;
+import com.matheus.apiprojetolp2.dto.HospedagemDTO;
 import com.matheus.apiprojetolp2.dto.QuartoDTO;
 import com.matheus.apiprojetolp2.dto.TarifaDTO;
 import com.matheus.apiprojetolp2.dto.TelefoneDTO;
@@ -42,31 +43,43 @@ public class Instantiation implements CommandLineRunner {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
+		/* LIMPANDO O BANCO DE DADOS */
+
 		clienteRepository.deleteAll();
 		quartoRespository.deleteAll();
 		hospedagemRespository.deleteAll();
 
-		Cliente jose = new Cliente(null, "jose", "jose@gmail.com", "1111111110", "22222222211",
-				new EnderecoDTO("x", "xxx", "xxxx", "xxxxx", "xxxxxxx", "xxxx", "xx"),
-				new TelefoneDTO("xx", "xxx", "xxxxxxxx"));
+		/* CRIANDO QUARTOS */
 
-		Cliente maria = new Cliente(null, "maria", "maria@gmail.com", "1111111110", "22222222211",
-				new EnderecoDTO("x", "xxx", "xxxx", "xxxxx", "xxxxxxx", "xxxx", "xx"),
-				new TelefoneDTO("xx", "xxx", "xxxxxxxx"));
-
-		Cliente alex = new Cliente(null, "alex", "alex@gmail.com", "1111111110", "22222222211",
-				new EnderecoDTO("x", "xxx", "xxxx", "xxxxx", "xxxxxxx", "xxxx", "xx"),
-				new TelefoneDTO("xx", "xxx", "xxxxxxxx"));
-
-		clienteRepository.saveAll(Arrays.asList(jose, maria, alex));
-
-		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.DISPONIVEL, new CategoriaDTO(TipoCategoria.MASTER));
+		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.OCUPADO, new CategoriaDTO(TipoCategoria.MASTER));
 		Quarto num2 = new Quarto(null, 150.00, StatusDoQuarto.OCUPADO, new CategoriaDTO(TipoCategoria.PADRAO));
 		Quarto num3 = new Quarto(null, 300.00, StatusDoQuarto.RESERVADO,
 				new CategoriaDTO(TipoCategoria.MASTER_SUPERTIOR));
-		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.MANUTENCAO, new CategoriaDTO(TipoCategoria.LUXO));
+		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.OCUPADO, new CategoriaDTO(TipoCategoria.LUXO));
+
+		/* SALVANDO OS DADOS NO BD */
 
 		quartoRespository.saveAll(Arrays.asList(num1, num2, num3, num4));
+
+		/* CRIANDO CLIENTES */
+
+		Cliente jose = new Cliente(null, "jose", "jose@gmail.com", "3216549877", "9876543217",
+				new EnderecoDTO("A", "111", "AA", "Bairro A", "62800000", "Aracati", "CE"),
+				new TelefoneDTO("55", "88", "911111111"));
+
+		Cliente maria = new Cliente(null, "maria", "maria@gmail.com", "4891560236", "9846513204",
+				new EnderecoDTO("B", "222", "BB", "Bairro B", "62800000", "Aracati", "CE"),
+				new TelefoneDTO("55", "88", "922222222"));
+
+		Cliente alex = new Cliente(null, "alex", "alex@gmail.com", "9517536548", "7539518522",
+				new EnderecoDTO("C", "333", "CC", "Bairro C", "62800000", "Aracati", "CE"),
+				new TelefoneDTO("55", "88", "933333333"));
+
+		/* SALVANDO OS DADOS NO BD */
+
+		clienteRepository.saveAll(Arrays.asList(jose, maria, alex));
+
+		/* HOSPEDANDO OS CLIENTES NOS QUARTOS */
 
 		Hospedagem h1 = new Hospedagem(null, sdf.parse("20/06/2019"), sdf.parse("27/06/2019"),
 				new ClienteSimplesDTO(jose));
@@ -74,19 +87,56 @@ public class Instantiation implements CommandLineRunner {
 				new ClienteSimplesDTO(maria));
 		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019"), sdf.parse("07/12/2019"),
 				new ClienteSimplesDTO(alex));
+		Hospedagem h4 = new Hospedagem(null, sdf.parse("01/03/2019"), sdf.parse("10/03/2019"),
+				new ClienteSimplesDTO(jose));
+
+		/* QUARTOS PARA CADA HOSPEDAGEM */
 
 		h1.getQuartos().add(new QuartoDTO(num1));
 		h2.getQuartos().add(new QuartoDTO(num4));
 		h3.getQuartos().add(new QuartoDTO(num2));
+		h4.getQuartos().add(new QuartoDTO(num3));
 
-		hospedagemRespository.saveAll(Arrays.asList(h1, h2, h3));
+		/* SALVANDO OS DADOS NO BD */
+
+		hospedagemRespository.saveAll(Arrays.asList(h1, h2, h3, h4));
+
+		/* HOSPEDAGENS DE CADA CLIENTE */
+
+		jose.getHospedagens().add(new HospedagemDTO(h4));
+		jose.getHospedagens().add(new HospedagemDTO(h1));
+		maria.getHospedagens().add(new HospedagemDTO(h2));
+		alex.getHospedagens().add(new HospedagemDTO(h3));
+
+		/* SALVANDO OS DADOS NO BD */
+
+		clienteRepository.saveAll(Arrays.asList(jose, maria, alex));
+
+		/* ADICIONANDO TARIFAS PARA CADA HOSPEDAGEM */
 
 		TarifaDTO t1 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
 		TarifaDTO t2 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
 		TarifaDTO t3 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
 
-		h1.getTarifas().addAll(Arrays.asList(t1, t2, t3));
+		TarifaDTO t4 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
+		TarifaDTO t5 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
+		TarifaDTO t6 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
 
-		hospedagemRespository.save(h1);
+		TarifaDTO t7 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
+		TarifaDTO t8 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
+		TarifaDTO t9 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
+
+		TarifaDTO t10 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
+		TarifaDTO t11 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
+		TarifaDTO t12 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
+
+		h1.getTarifas().addAll(Arrays.asList(t1, t2, t3));
+		h2.getTarifas().addAll(Arrays.asList(t4, t5, t6));
+		h3.getTarifas().addAll(Arrays.asList(t7, t8, t9));
+		h4.getTarifas().addAll(Arrays.asList(t10, t11, t12));
+
+		/* SALVANDO OS DADOS NO BD */
+
+		hospedagemRespository.saveAll(Arrays.asList(h1, h2, h3, h4));
 	}
 }
