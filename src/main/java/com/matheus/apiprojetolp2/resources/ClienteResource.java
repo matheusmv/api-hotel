@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matheus.apiprojetolp2.domain.Cliente;
+import com.matheus.apiprojetolp2.domain.Hospedagem;
 import com.matheus.apiprojetolp2.dto.ClienteDTO;
 import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
-import com.matheus.apiprojetolp2.dto.HospedagemDTO;
 import com.matheus.apiprojetolp2.services.ClienteService;
 
 @RestController
@@ -65,7 +65,7 @@ public class ClienteResource {
 	}
 
 	@RequestMapping(value = "/{id}/hospedagens", method = RequestMethod.GET)
-	public ResponseEntity<Set<HospedagemDTO>> findHospedagens(@PathVariable String id) {
+	public ResponseEntity<Set<Hospedagem>> findHospedagens(@PathVariable String id) {
 		Cliente obj = clienteService.findById(id);
 		return ResponseEntity.ok().body(obj.getHospedagens());
 	}

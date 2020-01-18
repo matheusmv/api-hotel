@@ -15,7 +15,6 @@ import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
 import com.matheus.apiprojetolp2.dto.CategoriaDTO;
 import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
 import com.matheus.apiprojetolp2.dto.EnderecoDTO;
-import com.matheus.apiprojetolp2.dto.HospedagemDTO;
 import com.matheus.apiprojetolp2.dto.QuartoDTO;
 import com.matheus.apiprojetolp2.dto.TarifaDTO;
 import com.matheus.apiprojetolp2.dto.TelefoneDTO;
@@ -103,10 +102,10 @@ public class Instantiation implements CommandLineRunner {
 
 		/* HOSPEDAGENS DE CADA CLIENTE */
 
-		jose.getHospedagens().add(new HospedagemDTO(h4));
-		jose.getHospedagens().add(new HospedagemDTO(h1));
-		maria.getHospedagens().add(new HospedagemDTO(h2));
-		alex.getHospedagens().add(new HospedagemDTO(h3));
+		jose.getHospedagens().add(h4);
+		jose.getHospedagens().add(h1);
+		maria.getHospedagens().add(h2);
+		alex.getHospedagens().add(h2);
 
 		/* SALVANDO OS DADOS NO BD */
 
@@ -138,5 +137,6 @@ public class Instantiation implements CommandLineRunner {
 		/* SALVANDO OS DADOS NO BD */
 
 		hospedagemRespository.saveAll(Arrays.asList(h1, h2, h3, h4));
+		clienteRepository.saveAll(Arrays.asList(jose, maria, alex));
 	}
 }

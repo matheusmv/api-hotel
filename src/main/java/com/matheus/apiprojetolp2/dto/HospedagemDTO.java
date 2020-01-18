@@ -1,6 +1,7 @@
 package com.matheus.apiprojetolp2.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,8 @@ public class HospedagemDTO implements Serializable {
 
 	private String id;
 	private ClienteSimplesDTO cliente;
+	private Date dataCheckIn;
+	private Date dataCheckOut;
 
 	private Set<QuartoDTO> quartos = new HashSet<>();
 
@@ -22,6 +25,8 @@ public class HospedagemDTO implements Serializable {
 	public HospedagemDTO(Hospedagem obj) {
 		id = obj.getId();
 		cliente = obj.getCliente();
+		dataCheckIn = obj.getDataCheckIn();
+		dataCheckOut = obj.getDataCheckOut();
 		quartos.addAll(obj.getQuartos());
 	}
 
@@ -39,6 +44,22 @@ public class HospedagemDTO implements Serializable {
 
 	public void setCliente(ClienteSimplesDTO cliente) {
 		this.cliente = cliente;
+	}
+
+	public Date getDataCheckIn() {
+		return dataCheckIn;
+	}
+
+	public void setDataCheckIn(Date dataCheckIn) {
+		this.dataCheckIn = dataCheckIn;
+	}
+
+	public Date getDataCheckOut() {
+		return dataCheckOut;
+	}
+
+	public void setDataCheckOut(Date dataCheckOut) {
+		this.dataCheckOut = dataCheckOut;
 	}
 
 	public Set<QuartoDTO> getQuartos() {
