@@ -2,6 +2,7 @@ package com.matheus.apiprojetolp2.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matheus.apiprojetolp2.domain.Hospedagem;
+import com.matheus.apiprojetolp2.dto.HospedagemDTO;
 import com.matheus.apiprojetolp2.services.HospedagemService;
 
 @RestController
@@ -23,9 +25,11 @@ public class HospedagemResource {
 	private HospedagemService hospedagemService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Hospedagem>> findAll() {
+	public ResponseEntity<List<HospedagemDTO>> findAll() {
 		List<Hospedagem> hospedagens = hospedagemService.findAll();
-		return ResponseEntity.ok().body(hospedagens);
+		List<HospedagemDTO> hospedagensDTO = hospedagens.stream().map(x -> new HospedagemDTO(x))
+				.collect(Collectors.toList());
+		return ResponseEntity.ok().body(hospedagensDTO);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
