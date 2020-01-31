@@ -15,20 +15,20 @@ public class Quarto implements Serializable {
 
 	@Id
 	private String id;
-	private Double custo;
-	private Integer statusDoQuarto;
 	private Integer tipoCategoria;
+	private Integer statusDoQuarto;
+	private Double custo;
 
 	public Quarto() {
 
 	}
 
-	public Quarto(String id, Double custo, StatusDoQuarto status, TipoCategoria categoria) {
+	public Quarto(String id, TipoCategoria categoria, StatusDoQuarto status, Double custo) {
 		super();
 		this.id = id;
-		this.custo = custo;
-		setStatus(status);
 		setCategoria(categoria);
+		setStatus(status);
+		this.custo = custo;
 	}
 
 	public String getId() {
@@ -39,12 +39,14 @@ public class Quarto implements Serializable {
 		this.id = id;
 	}
 
-	public Double getCusto() {
-		return custo;
+	public TipoCategoria getCategoria() {
+		return TipoCategoria.valueOf(tipoCategoria);
 	}
 
-	public void setCusto(Double custo) {
-		this.custo = custo;
+	public void setCategoria(TipoCategoria categoria) {
+		if (categoria != null) {
+			this.tipoCategoria = categoria.getCodigo();
+		}
 	}
 
 	public StatusDoQuarto getStatus() {
@@ -57,14 +59,12 @@ public class Quarto implements Serializable {
 		}
 	}
 
-	public TipoCategoria getCategoria() {
-		return TipoCategoria.valueOf(tipoCategoria);
+	public Double getCusto() {
+		return custo;
 	}
 
-	public void setCategoria(TipoCategoria categoria) {
-		if (categoria != null) {
-			this.tipoCategoria = categoria.getCodigo();
-		}
+	public void setCusto(Double custo) {
+		this.custo = custo;
 	}
 
 	@Override

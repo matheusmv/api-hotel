@@ -36,7 +36,7 @@ public class QuartoResource {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Quarto obj) {
-		Quarto quarto = new Quarto(obj.getId(), obj.getCusto(), obj.getStatus(), obj.getCategoria());
+		Quarto quarto = new Quarto(obj.getId(), obj.getCategoria(), obj.getStatus(), obj.getCusto());
 		quarto = quartoService.insert(quarto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(quarto.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -44,7 +44,7 @@ public class QuartoResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Quarto obj, @PathVariable String id) {
-		Quarto newObj = new Quarto(id, obj.getCusto(), obj.getStatus(), obj.getCategoria());
+		Quarto newObj = new Quarto(id, obj.getCategoria(), obj.getStatus(), obj.getCusto());
 		newObj = quartoService.update(newObj);
 		return ResponseEntity.noContent().build();
 	}

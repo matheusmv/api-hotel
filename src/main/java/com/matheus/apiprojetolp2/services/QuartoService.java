@@ -36,8 +36,9 @@ public class QuartoService {
 	}
 
 	private void updateDate(Quarto newObj, Quarto obj) {
-		newObj.setCusto(obj.getCusto());
+		newObj.setCategoria(obj.getCategoria());
 		newObj.setStatus(obj.getStatus());
+		newObj.setCusto(obj.getCusto());
 	}
 
 	public void delete(String id) {

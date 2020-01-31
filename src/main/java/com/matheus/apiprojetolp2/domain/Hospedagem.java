@@ -87,13 +87,13 @@ public class Hospedagem implements Serializable {
 	public void setTarifas(List<Tarifa> tarifas) {
 		this.tarifas = tarifas;
 	}
-	
+
 	public Double totalDespesas() {
 		Double total = 0.0;
-		
+
 		total += tarifas.stream().mapToDouble(t -> t.getCusto()).sum();
 		total += quartos.stream().mapToDouble(q -> q.getCusto()).sum();
-		
+
 		return total;
 	}
 

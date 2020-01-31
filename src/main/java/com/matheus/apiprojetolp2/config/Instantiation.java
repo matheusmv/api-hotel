@@ -37,7 +37,7 @@ public class Instantiation implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
 		/* LIMPANDO O BANCO DE DADOS */
@@ -48,10 +48,10 @@ public class Instantiation implements CommandLineRunner {
 
 		/* CRIANDO QUARTOS */
 
-		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.OCUPADO, TipoCategoria.MASTER);
-		Quarto num2 = new Quarto(null, 150.00, StatusDoQuarto.OCUPADO, TipoCategoria.PADRAO);
-		Quarto num3 = new Quarto(null, 300.00, StatusDoQuarto.RESERVADO, TipoCategoria.MASTER_SUPERTIOR);
-		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.OCUPADO, TipoCategoria.LUXO);
+		Quarto num1 = new Quarto(null, TipoCategoria.MASTER, StatusDoQuarto.OCUPADO, 200.00);
+		Quarto num2 = new Quarto(null, TipoCategoria.PADRAO, StatusDoQuarto.OCUPADO, 150.00);
+		Quarto num3 = new Quarto(null, TipoCategoria.MASTER_SUPERTIOR, StatusDoQuarto.RESERVADO, 300.00);
+		Quarto num4 = new Quarto(null, TipoCategoria.LUXO, StatusDoQuarto.OCUPADO, 175.00);
 
 		/* SALVANDO OS DADOS NO BD */
 
@@ -77,13 +77,13 @@ public class Instantiation implements CommandLineRunner {
 
 		/* HOSPEDANDO OS CLIENTES NOS QUARTOS */
 
-		Hospedagem h1 = new Hospedagem(null, sdf.parse("20/06/2019"), sdf.parse("27/06/2019"),
+		Hospedagem h1 = new Hospedagem(null, sdf.parse("20/06/2019 07:30:15"), sdf.parse("27/06/2019 23:30:15"),
 				new ClienteSimplesDTO(jose));
-		Hospedagem h2 = new Hospedagem(null, sdf.parse("01/08/2019"), sdf.parse("17/08/2019"),
+		Hospedagem h2 = new Hospedagem(null, sdf.parse("01/08/2019 07:30:15"), sdf.parse("17/08/2019 23:30:15"),
 				new ClienteSimplesDTO(maria));
-		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019"), sdf.parse("07/12/2019"),
+		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019 07:30:15"), sdf.parse("07/12/2019 23:30:15"),
 				new ClienteSimplesDTO(alex));
-		Hospedagem h4 = new Hospedagem(null, sdf.parse("01/03/2019"), sdf.parse("10/03/2019"),
+		Hospedagem h4 = new Hospedagem(null, sdf.parse("01/03/2019 07:30:15"), sdf.parse("10/03/2019 23:30:15"),
 				new ClienteSimplesDTO(jose));
 
 		/* QUARTOS PARA CADA HOSPEDAGEM */
