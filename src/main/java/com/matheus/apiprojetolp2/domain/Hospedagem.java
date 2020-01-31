@@ -1,8 +1,8 @@
 package com.matheus.apiprojetolp2.domain;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,8 +18,8 @@ public class Hospedagem implements Serializable {
 	@Id
 	private String id;
 	private String idCliente;
-	private Date dataCheckIn;
-	private Date dataCheckOut;
+	private Instant dataCheckIn;
+	private Instant dataCheckOut;
 
 	private Set<Quarto> quartos = new HashSet<>();
 
@@ -29,7 +29,7 @@ public class Hospedagem implements Serializable {
 
 	}
 
-	public Hospedagem(String id, String idCliente, Date dataCheckIn, Date dataCheckOut) {
+	public Hospedagem(String id, String idCliente, Instant dataCheckIn, Instant dataCheckOut) {
 		super();
 		this.id = id;
 		this.idCliente = idCliente;
@@ -53,19 +53,19 @@ public class Hospedagem implements Serializable {
 		this.idCliente = idCliente;
 	}
 
-	public Date getDataCheckIn() {
+	public Instant getDataCheckIn() {
 		return dataCheckIn;
 	}
 
-	public void setDataCheckIn(Date dataCheckIn) {
+	public void setDataCheckIn(Instant dataCheckIn) {
 		this.dataCheckIn = dataCheckIn;
 	}
 
-	public Date getDataCheckOut() {
+	public Instant getDataCheckOut() {
 		return dataCheckOut;
 	}
 
-	public void setDataCheckOut(Date dataCheckOut) {
+	public void setDataCheckOut(Instant dataCheckOut) {
 		this.dataCheckOut = dataCheckOut;
 	}
 

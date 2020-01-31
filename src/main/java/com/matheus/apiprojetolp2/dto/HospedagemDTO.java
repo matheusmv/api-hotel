@@ -1,7 +1,7 @@
 package com.matheus.apiprojetolp2.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,8 +15,8 @@ public class HospedagemDTO implements Serializable {
 
 	private String id;
 	private String idCliente;
-	private Date dataCheckIn;
-	private Date dataCheckOut;
+	private Instant dataCheckIn;
+	private Instant dataCheckOut;
 	private Double totalDespesas;
 
 	private Set<Quarto> quartos = new HashSet<>();
@@ -45,11 +45,11 @@ public class HospedagemDTO implements Serializable {
 		return idCliente;
 	}
 
-	public Date getDataCheckIn() {
+	public Instant getDataCheckIn() {
 		return dataCheckIn;
 	}
 
-	public Date getDataCheckOut() {
+	public Instant getDataCheckOut() {
 		return dataCheckOut;
 	}
 

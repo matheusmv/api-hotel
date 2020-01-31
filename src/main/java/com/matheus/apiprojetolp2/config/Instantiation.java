@@ -1,8 +1,7 @@
 package com.matheus.apiprojetolp2.config;
 
-import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Arrays;
-import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -35,9 +34,6 @@ public class Instantiation implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
 		/* LIMPANDO O BANCO DE DADOS */
 
@@ -76,14 +72,10 @@ public class Instantiation implements CommandLineRunner {
 
 		/* HOSPEDANDO OS CLIENTES NOS QUARTOS */
 
-		Hospedagem h1 = new Hospedagem(null, jose.getId(), sdf.parse("20/06/2019 07:30:15"),
-				sdf.parse("27/06/2019 23:30:15"));
-		Hospedagem h2 = new Hospedagem(null, maria.getId(), sdf.parse("01/08/2019 07:30:15"),
-				sdf.parse("17/08/2019 23:30:15"));
-		Hospedagem h3 = new Hospedagem(null, alex.getId(), sdf.parse("30/11/2019 07:30:15"),
-				sdf.parse("07/12/2019 23:30:15"));
-		Hospedagem h4 = new Hospedagem(null, jose.getId(), sdf.parse("01/03/2019 07:30:15"),
-				sdf.parse("10/03/2019 23:30:15"));
+		Hospedagem h1 = new Hospedagem(null, jose.getId(), Instant.now(), Instant.now().plusSeconds(604800));
+		Hospedagem h2 = new Hospedagem(null, maria.getId(), Instant.now(), Instant.now().plusSeconds(654800));
+		Hospedagem h3 = new Hospedagem(null, alex.getId(), Instant.now(), Instant.now().plusSeconds(804800));
+		Hospedagem h4 = new Hospedagem(null, jose.getId(), Instant.now(), Instant.now().plusSeconds(904800));
 
 		/* QUARTOS PARA CADA HOSPEDAGEM */
 
