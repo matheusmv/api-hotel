@@ -10,8 +10,6 @@ import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
-
 @Document(collection = "hospedagem")
 public class Hospedagem implements Serializable {
 
@@ -19,10 +17,9 @@ public class Hospedagem implements Serializable {
 
 	@Id
 	private String id;
+	private String idCliente;
 	private Date dataCheckIn;
 	private Date dataCheckOut;
-
-	private ClienteSimplesDTO cliente;
 
 	private Set<Quarto> quartos = new HashSet<>();
 
@@ -32,12 +29,12 @@ public class Hospedagem implements Serializable {
 
 	}
 
-	public Hospedagem(String id, Date dataCheckIn, Date dataCheckOut, ClienteSimplesDTO cliente) {
+	public Hospedagem(String id, String idCliente, Date dataCheckIn, Date dataCheckOut) {
 		super();
 		this.id = id;
+		this.idCliente = idCliente;
 		this.dataCheckIn = dataCheckIn;
 		this.dataCheckOut = dataCheckOut;
-		this.cliente = cliente;
 	}
 
 	public String getId() {
@@ -46,6 +43,14 @@ public class Hospedagem implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(String idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public Date getDataCheckIn() {
@@ -62,14 +67,6 @@ public class Hospedagem implements Serializable {
 
 	public void setDataCheckOut(Date dataCheckOut) {
 		this.dataCheckOut = dataCheckOut;
-	}
-
-	public ClienteSimplesDTO getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(ClienteSimplesDTO cliente) {
-		this.cliente = cliente;
 	}
 
 	public Set<Quarto> getQuartos() {

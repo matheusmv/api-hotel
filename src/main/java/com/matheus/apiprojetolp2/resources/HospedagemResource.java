@@ -40,8 +40,8 @@ public class HospedagemResource {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Hospedagem obj) {
-		Hospedagem hospedagem = new Hospedagem(obj.getId(), obj.getDataCheckIn(), obj.getDataCheckOut(),
-				obj.getCliente());
+		Hospedagem hospedagem = new Hospedagem(obj.getId(), obj.getIdCliente(), obj.getDataCheckIn(),
+				obj.getDataCheckOut());
 		hospedagem = hospedagemService.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(hospedagem.getId())
 				.toUri();
@@ -50,7 +50,7 @@ public class HospedagemResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Hospedagem obj, @PathVariable String id) {
-		Hospedagem newHospedagem = new Hospedagem(id, obj.getDataCheckIn(), obj.getDataCheckOut(), obj.getCliente());
+		Hospedagem newHospedagem = new Hospedagem(id, obj.getIdCliente(), obj.getDataCheckIn(), obj.getDataCheckOut());
 		newHospedagem = hospedagemService.update(newHospedagem);
 		return ResponseEntity.noContent().build();
 	}

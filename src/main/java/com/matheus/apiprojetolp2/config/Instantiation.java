@@ -17,7 +17,6 @@ import com.matheus.apiprojetolp2.domain.Telefone;
 import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
 import com.matheus.apiprojetolp2.domain.enums.TipoCategoria;
 import com.matheus.apiprojetolp2.domain.enums.TipoServico;
-import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
 import com.matheus.apiprojetolp2.repositories.ClienteRepository;
 import com.matheus.apiprojetolp2.repositories.HospedagemRepository;
 import com.matheus.apiprojetolp2.repositories.QuartoRepository;
@@ -77,14 +76,14 @@ public class Instantiation implements CommandLineRunner {
 
 		/* HOSPEDANDO OS CLIENTES NOS QUARTOS */
 
-		Hospedagem h1 = new Hospedagem(null, sdf.parse("20/06/2019 07:30:15"), sdf.parse("27/06/2019 23:30:15"),
-				new ClienteSimplesDTO(jose));
-		Hospedagem h2 = new Hospedagem(null, sdf.parse("01/08/2019 07:30:15"), sdf.parse("17/08/2019 23:30:15"),
-				new ClienteSimplesDTO(maria));
-		Hospedagem h3 = new Hospedagem(null, sdf.parse("30/11/2019 07:30:15"), sdf.parse("07/12/2019 23:30:15"),
-				new ClienteSimplesDTO(alex));
-		Hospedagem h4 = new Hospedagem(null, sdf.parse("01/03/2019 07:30:15"), sdf.parse("10/03/2019 23:30:15"),
-				new ClienteSimplesDTO(jose));
+		Hospedagem h1 = new Hospedagem(null, jose.getId(), sdf.parse("20/06/2019 07:30:15"),
+				sdf.parse("27/06/2019 23:30:15"));
+		Hospedagem h2 = new Hospedagem(null, maria.getId(), sdf.parse("01/08/2019 07:30:15"),
+				sdf.parse("17/08/2019 23:30:15"));
+		Hospedagem h3 = new Hospedagem(null, alex.getId(), sdf.parse("30/11/2019 07:30:15"),
+				sdf.parse("07/12/2019 23:30:15"));
+		Hospedagem h4 = new Hospedagem(null, jose.getId(), sdf.parse("01/03/2019 07:30:15"),
+				sdf.parse("10/03/2019 23:30:15"));
 
 		/* QUARTOS PARA CADA HOSPEDAGEM */
 

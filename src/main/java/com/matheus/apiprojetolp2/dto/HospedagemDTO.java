@@ -14,13 +14,13 @@ public class HospedagemDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String id;
-	private ClienteSimplesDTO cliente;
+	private String idCliente;
 	private Date dataCheckIn;
 	private Date dataCheckOut;
 	private Double totalDespesas;
 
 	private Set<Quarto> quartos = new HashSet<>();
-	
+
 	private Set<Tarifa> tarifas = new HashSet<>();
 
 	public HospedagemDTO() {
@@ -29,7 +29,7 @@ public class HospedagemDTO implements Serializable {
 
 	public HospedagemDTO(Hospedagem obj) {
 		id = obj.getId();
-		cliente = obj.getCliente();
+		idCliente = obj.getIdCliente();
 		dataCheckIn = obj.getDataCheckIn();
 		dataCheckOut = obj.getDataCheckOut();
 		totalDespesas = obj.totalDespesas();
@@ -45,12 +45,12 @@ public class HospedagemDTO implements Serializable {
 		this.id = id;
 	}
 
-	public ClienteSimplesDTO getCliente() {
-		return cliente;
+	public String getIdCliente() {
+		return idCliente;
 	}
 
-	public void setCliente(ClienteSimplesDTO cliente) {
-		this.cliente = cliente;
+	public void setIdCliente(String idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public Date getDataCheckIn() {
