@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import com.matheus.apiprojetolp2.domain.Categoria;
 import com.matheus.apiprojetolp2.domain.Cliente;
 import com.matheus.apiprojetolp2.domain.Endereco;
 import com.matheus.apiprojetolp2.domain.Hospedagem;
@@ -49,11 +48,10 @@ public class Instantiation implements CommandLineRunner {
 
 		/* CRIANDO QUARTOS */
 
-		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.OCUPADO, new Categoria(TipoCategoria.MASTER));
-		Quarto num2 = new Quarto(null, 150.00, StatusDoQuarto.OCUPADO, new Categoria(TipoCategoria.PADRAO));
-		Quarto num3 = new Quarto(null, 300.00, StatusDoQuarto.RESERVADO,
-				new Categoria(TipoCategoria.MASTER_SUPERTIOR));
-		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.OCUPADO, new Categoria(TipoCategoria.LUXO));
+		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.OCUPADO, TipoCategoria.MASTER);
+		Quarto num2 = new Quarto(null, 150.00, StatusDoQuarto.OCUPADO, TipoCategoria.PADRAO);
+		Quarto num3 = new Quarto(null, 300.00, StatusDoQuarto.RESERVADO, TipoCategoria.MASTER_SUPERTIOR);
+		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.OCUPADO, TipoCategoria.LUXO);
 
 		/* SALVANDO OS DADOS NO BD */
 
