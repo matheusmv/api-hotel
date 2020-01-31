@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 import com.matheus.apiprojetolp2.domain.Quarto;
 
-public class QuartoDTO implements Serializable {
+public class QuartoResponseDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private String id;
 
-	public QuartoDTO() {
+	public QuartoResponseDTO() {
 
 	}
 
-	public QuartoDTO(Quarto obj) {
+	public QuartoResponseDTO(Quarto obj) {
 		id = obj.getId();
 	}
 

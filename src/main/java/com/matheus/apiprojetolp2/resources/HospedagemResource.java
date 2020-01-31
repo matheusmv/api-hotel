@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matheus.apiprojetolp2.domain.Hospedagem;
 import com.matheus.apiprojetolp2.dto.HospedagemDTO;
+import com.matheus.apiprojetolp2.dto.HospedagemResponseDTO;
 import com.matheus.apiprojetolp2.services.HospedagemService;
 
 @RestController
@@ -25,32 +26,31 @@ public class HospedagemResource {
 	private HospedagemService hospedagemService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<HospedagemDTO>> findAll() {
+	public ResponseEntity<List<HospedagemResponseDTO>> findAll() {
 		List<Hospedagem> hospedagens = hospedagemService.findAll();
-		List<HospedagemDTO> hospedagensDTO = hospedagens.stream().map(x -> new HospedagemDTO(x))
+		List<HospedagemResponseDTO> hospedagensResponseDTO = hospedagens.stream().map(x -> new HospedagemResponseDTO(x))
 				.collect(Collectors.toList());
-		return ResponseEntity.ok().body(hospedagensDTO);
+		return ResponseEntity.ok().body(hospedagensResponseDTO);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Hospedagem> findById(@PathVariable String id) {
+	public ResponseEntity<HospedagemDTO> findById(@PathVariable String id) {
 		Hospedagem hospedagem = hospedagemService.findById(id);
-		return ResponseEntity.ok().body(hospedagem);
+		return ResponseEntity.ok().body(new HospedagemDTO(hospedagem));
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Hospedagem obj) {
-		Hospedagem hospedagem = new Hospedagem(obj.getId(), obj.getIdCliente(), obj.getDataCheckIn(),
-				obj.getDataCheckOut());
-		hospedagem = hospedagemService.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody HospedagemDTO obj) {
+		Hospedagem hospedagem = hospedagemService.fromDTO(obj);
+		hospedagem = hospedagemService.insert(hospedagem);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(hospedagem.getId())
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Hospedagem obj, @PathVariable String id) {
-		Hospedagem newHospedagem = new Hospedagem(id, obj.getIdCliente(), obj.getDataCheckIn(), obj.getDataCheckOut());
+	public ResponseEntity<Void> update(@RequestBody HospedagemDTO obj, @PathVariable String id) {
+		Hospedagem newHospedagem = hospedagemService.fromDTO(obj);
 		newHospedagem = hospedagemService.update(newHospedagem);
 		return ResponseEntity.noContent().build();
 	}

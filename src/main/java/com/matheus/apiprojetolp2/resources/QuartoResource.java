@@ -2,6 +2,7 @@ package com.matheus.apiprojetolp2.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matheus.apiprojetolp2.domain.Quarto;
+import com.matheus.apiprojetolp2.dto.QuartoResponseDTO;
 import com.matheus.apiprojetolp2.services.QuartoService;
 
 @RestController
@@ -23,9 +25,11 @@ public class QuartoResource {
 	private QuartoService quartoService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Quarto>> findAll() {
+	public ResponseEntity<List<QuartoResponseDTO>> findAll() {
 		List<Quarto> quartos = quartoService.findAll();
-		return ResponseEntity.ok().body(quartos);
+		List<QuartoResponseDTO> quartosResponseDTO = quartos.stream().map(q -> new QuartoResponseDTO(q))
+				.collect(Collectors.toList());
+		return ResponseEntity.ok().body(quartosResponseDTO);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -36,7 +40,7 @@ public class QuartoResource {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Quarto obj) {
-		Quarto quarto = new Quarto(obj.getId(), obj.getCategoria(), obj.getStatus(), obj.getCusto());
+		Quarto quarto = new Quarto(null, obj.getCategoria(), obj.getStatus(), obj.getCusto());
 		quarto = quartoService.insert(quarto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(quarto.getId()).toUri();
 		return ResponseEntity.created(uri).build();

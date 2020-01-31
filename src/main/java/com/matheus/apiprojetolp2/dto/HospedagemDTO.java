@@ -41,55 +41,27 @@ public class HospedagemDTO implements Serializable {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public String getIdCliente() {
 		return idCliente;
-	}
-
-	public void setIdCliente(String idCliente) {
-		this.idCliente = idCliente;
 	}
 
 	public Date getDataCheckIn() {
 		return dataCheckIn;
 	}
 
-	public void setDataCheckIn(Date dataCheckIn) {
-		this.dataCheckIn = dataCheckIn;
-	}
-
 	public Date getDataCheckOut() {
 		return dataCheckOut;
-	}
-
-	public void setDataCheckOut(Date dataCheckOut) {
-		this.dataCheckOut = dataCheckOut;
 	}
 
 	public Double getTotalDespesas() {
 		return totalDespesas;
 	}
 
-	public void setTotalDespesas(Double totalDespesas) {
-		this.totalDespesas = totalDespesas;
-	}
-
 	public Set<Quarto> getQuartos() {
 		return quartos;
 	}
 
-	public void setQuartos(Set<Quarto> quartos) {
-		this.quartos = quartos;
-	}
-
 	public Set<Tarifa> getTarifas() {
 		return tarifas;
-	}
-
-	public void setTarifas(Set<Tarifa> tarifas) {
-		this.tarifas = tarifas;
 	}
 }

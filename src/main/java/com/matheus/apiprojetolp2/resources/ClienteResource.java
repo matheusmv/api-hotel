@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matheus.apiprojetolp2.domain.Cliente;
 import com.matheus.apiprojetolp2.dto.ClienteDTO;
-import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
+import com.matheus.apiprojetolp2.dto.ClienteResponseDTO;
 import com.matheus.apiprojetolp2.services.ClienteService;
 
 @RestController
@@ -26,11 +26,11 @@ public class ClienteResource {
 	private ClienteService clienteService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<ClienteSimplesDTO>> findAll() {
+	public ResponseEntity<List<ClienteResponseDTO>> findAll() {
 		List<Cliente> clientes = clienteService.findAll();
-		List<ClienteSimplesDTO> clientesDTO = clientes.stream().map(x -> new ClienteSimplesDTO(x))
+		List<ClienteResponseDTO> clientesResponseDTO = clientes.stream().map(x -> new ClienteResponseDTO(x))
 				.collect(Collectors.toList());
-		return ResponseEntity.ok().body(clientesDTO);
+		return ResponseEntity.ok().body(clientesResponseDTO);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -40,8 +40,8 @@ public class ClienteResource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Cliente obj) {
-		Cliente cliente = obj;
+	public ResponseEntity<Void> insert(@RequestBody ClienteDTO obj) {
+		Cliente cliente = clienteService.fromDTO(obj);
 		cliente = clienteService.insert(cliente);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cliente.getId())
 				.toUri();
@@ -49,10 +49,10 @@ public class ClienteResource {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Cliente obj, @PathVariable String id) {
-		Cliente cliente = obj;
+	public ResponseEntity<Void> update(@RequestBody ClienteDTO obj, @PathVariable String id) {
+		Cliente cliente = clienteService.fromDTO(obj);
 		cliente.setId(id);
-		cliente = clienteService.update(obj);
+		cliente = clienteService.update(cliente);
 		return ResponseEntity.noContent().build();
 	}
 
@@ -61,11 +61,4 @@ public class ClienteResource {
 		clienteService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-
-	// reajustar
-//	@RequestMapping(value = "/{id}/hospedagens", method = RequestMethod.GET)
-//	public ResponseEntity<List<Hospedagem>> findHospedagens(@PathVariable String id) {
-//		Cliente obj = clienteService.findById(id);
-//		return ResponseEntity.ok().body(obj.getHospedagens());
-//	}
 }

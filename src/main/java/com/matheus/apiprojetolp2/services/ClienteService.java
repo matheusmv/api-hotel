@@ -51,7 +51,7 @@ public class ClienteService {
 	}
 
 	public Cliente fromDTO(ClienteDTO obj) {
-		return new Cliente(obj.getId(), obj.getNome(), obj.getEmail(), obj.getSenha(), obj.getCpf(), obj.getRg(),
+		return new Cliente(null, obj.getNome(), obj.getEmail(), obj.getSenha(), obj.getCpf(), obj.getRg(),
 				obj.getEndereco(), obj.getTelefone());
 	}
 }

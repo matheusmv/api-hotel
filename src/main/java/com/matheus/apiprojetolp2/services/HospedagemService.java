@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.matheus.apiprojetolp2.domain.Hospedagem;
+import com.matheus.apiprojetolp2.dto.HospedagemDTO;
 import com.matheus.apiprojetolp2.repositories.HospedagemRepository;
 import com.matheus.apiprojetolp2.services.exception.ObjectNotFoundException;
 
@@ -43,5 +44,9 @@ public class HospedagemService {
 	public void delete(String id) {
 		findById(id);
 		hospedagemRespository.deleteById(id);
+	}
+
+	public Hospedagem fromDTO(HospedagemDTO obj) {
+		return new Hospedagem(null, obj.getIdCliente(), obj.getDataCheckIn(), obj.getDataCheckOut());
 	}
 }
