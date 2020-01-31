@@ -51,6 +51,7 @@ public class HospedagemResource {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody HospedagemDTO obj, @PathVariable String id) {
 		Hospedagem newHospedagem = hospedagemService.fromDTO(obj);
+		newHospedagem.setId(id);
 		newHospedagem = hospedagemService.update(newHospedagem);
 		return ResponseEntity.noContent().build();
 	}

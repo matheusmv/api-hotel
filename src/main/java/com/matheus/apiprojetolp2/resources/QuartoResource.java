@@ -48,8 +48,9 @@ public class QuartoResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Quarto obj, @PathVariable String id) {
-		Quarto newObj = new Quarto(id, obj.getCategoria(), obj.getStatus(), obj.getCusto());
-		newObj = quartoService.update(newObj);
+		Quarto newQuarto = new Quarto(null, obj.getCategoria(), obj.getStatus(), obj.getCusto());
+		newQuarto.setId(id);
+		newQuarto = quartoService.update(newQuarto);
 		return ResponseEntity.noContent().build();
 	}
 
