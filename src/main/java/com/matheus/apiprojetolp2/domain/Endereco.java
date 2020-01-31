@@ -1,8 +1,8 @@
-package com.matheus.apiprojetolp2.dto;
+package com.matheus.apiprojetolp2.domain;
 
 import java.io.Serializable;
 
-public class EnderecoDTO implements Serializable {
+public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,11 +14,11 @@ public class EnderecoDTO implements Serializable {
 	private String cidade;
 	private String estado;
 
-	public EnderecoDTO() {
+	public Endereco() {
 
 	}
 
-	public EnderecoDTO(String logradouro, String numero, String complemento, String bairro, String cep, String cidade,
+	public Endereco(String logradouro, String numero, String complemento, String bairro, String cep, String cidade,
 			String estado) {
 		super();
 		this.logradouro = logradouro;

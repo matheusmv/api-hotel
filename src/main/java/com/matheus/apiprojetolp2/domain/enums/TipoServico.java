@@ -1,4 +1,4 @@
-package com.matheus.apiprojetolp2.dto.enums;
+package com.matheus.apiprojetolp2.domain.enums;
 
 public enum TipoServico {
 

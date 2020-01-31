@@ -1,21 +1,21 @@
-package com.matheus.apiprojetolp2.dto;
+package com.matheus.apiprojetolp2.domain;
 
 import java.io.Serializable;
 
-import com.matheus.apiprojetolp2.dto.enums.TipoServico;
+import com.matheus.apiprojetolp2.domain.enums.TipoServico;
 
-public class TarifaDTO implements Serializable {
+public class Tarifa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer tipoServico;
 	private Double custo;
 
-	public TarifaDTO() {
+	public Tarifa() {
 
 	}
 
-	public TarifaDTO(TipoServico servico, Double custo) {
+	public Tarifa(TipoServico servico, Double custo) {
 		setTipoServico(servico);
 		this.custo = custo;
 	}

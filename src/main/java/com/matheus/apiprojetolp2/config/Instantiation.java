@@ -8,18 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.matheus.apiprojetolp2.domain.Categoria;
 import com.matheus.apiprojetolp2.domain.Cliente;
+import com.matheus.apiprojetolp2.domain.Endereco;
 import com.matheus.apiprojetolp2.domain.Hospedagem;
 import com.matheus.apiprojetolp2.domain.Quarto;
+import com.matheus.apiprojetolp2.domain.Tarifa;
+import com.matheus.apiprojetolp2.domain.Telefone;
 import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
-import com.matheus.apiprojetolp2.dto.CategoriaDTO;
+import com.matheus.apiprojetolp2.domain.enums.TipoCategoria;
+import com.matheus.apiprojetolp2.domain.enums.TipoServico;
 import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
-import com.matheus.apiprojetolp2.dto.EnderecoDTO;
-import com.matheus.apiprojetolp2.dto.QuartoDTO;
-import com.matheus.apiprojetolp2.dto.TarifaDTO;
-import com.matheus.apiprojetolp2.dto.TelefoneDTO;
-import com.matheus.apiprojetolp2.dto.enums.TipoCategoria;
-import com.matheus.apiprojetolp2.dto.enums.TipoServico;
 import com.matheus.apiprojetolp2.repositories.ClienteRepository;
 import com.matheus.apiprojetolp2.repositories.HospedagemRepository;
 import com.matheus.apiprojetolp2.repositories.QuartoRepository;
@@ -50,11 +49,11 @@ public class Instantiation implements CommandLineRunner {
 
 		/* CRIANDO QUARTOS */
 
-		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.OCUPADO, new CategoriaDTO(TipoCategoria.MASTER));
-		Quarto num2 = new Quarto(null, 150.00, StatusDoQuarto.OCUPADO, new CategoriaDTO(TipoCategoria.PADRAO));
+		Quarto num1 = new Quarto(null, 200.00, StatusDoQuarto.OCUPADO, new Categoria(TipoCategoria.MASTER));
+		Quarto num2 = new Quarto(null, 150.00, StatusDoQuarto.OCUPADO, new Categoria(TipoCategoria.PADRAO));
 		Quarto num3 = new Quarto(null, 300.00, StatusDoQuarto.RESERVADO,
-				new CategoriaDTO(TipoCategoria.MASTER_SUPERTIOR));
-		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.OCUPADO, new CategoriaDTO(TipoCategoria.LUXO));
+				new Categoria(TipoCategoria.MASTER_SUPERTIOR));
+		Quarto num4 = new Quarto(null, 175.00, StatusDoQuarto.OCUPADO, new Categoria(TipoCategoria.LUXO));
 
 		/* SALVANDO OS DADOS NO BD */
 
@@ -63,16 +62,16 @@ public class Instantiation implements CommandLineRunner {
 		/* CRIANDO CLIENTES */
 
 		Cliente jose = new Cliente(null, "jose", "jose@gmail.com", "3216549877", "9876543217",
-				new EnderecoDTO("A", "111", "AA", "Bairro A", "62800000", "Aracati", "CE"),
-				new TelefoneDTO("55", "88", "911111111"));
+				new Endereco("A", "111", "AA", "Bairro A", "62800000", "Aracati", "CE"),
+				new Telefone("55", "88", "911111111"));
 
 		Cliente maria = new Cliente(null, "maria", "maria@gmail.com", "4891560236", "9846513204",
-				new EnderecoDTO("B", "222", "BB", "Bairro B", "62800000", "Aracati", "CE"),
-				new TelefoneDTO("55", "88", "922222222"));
+				new Endereco("B", "222", "BB", "Bairro B", "62800000", "Aracati", "CE"),
+				new Telefone("55", "88", "922222222"));
 
 		Cliente alex = new Cliente(null, "alex", "alex@gmail.com", "9517536548", "7539518522",
-				new EnderecoDTO("C", "333", "CC", "Bairro C", "62800000", "Aracati", "CE"),
-				new TelefoneDTO("55", "88", "933333333"));
+				new Endereco("C", "333", "CC", "Bairro C", "62800000", "Aracati", "CE"),
+				new Telefone("55", "88", "933333333"));
 
 		/* SALVANDO OS DADOS NO BD */
 
@@ -91,10 +90,10 @@ public class Instantiation implements CommandLineRunner {
 
 		/* QUARTOS PARA CADA HOSPEDAGEM */
 
-		h1.getQuartos().add(new QuartoDTO(num1));
-		h2.getQuartos().add(new QuartoDTO(num4));
-		h3.getQuartos().add(new QuartoDTO(num2));
-		h4.getQuartos().add(new QuartoDTO(num3));
+		h1.getQuartos().add(num1);
+		h2.getQuartos().add(num4);
+		h3.getQuartos().add(num2);
+		h4.getQuartos().add(num3);
 
 		/* SALVANDO OS DADOS NO BD */
 
@@ -113,21 +112,21 @@ public class Instantiation implements CommandLineRunner {
 
 		/* ADICIONANDO TARIFAS PARA CADA HOSPEDAGEM */
 
-		TarifaDTO t1 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
-		TarifaDTO t2 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
-		TarifaDTO t3 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
+		Tarifa t1 = new Tarifa(TipoServico.ALIMENTACAO, 40.00);
+		Tarifa t2 = new Tarifa(TipoServico.ALIMENTACAO, 50.80);
+		Tarifa t3 = new Tarifa(TipoServico.LIMPEZA, 120.00);
 
-		TarifaDTO t4 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
-		TarifaDTO t5 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
-		TarifaDTO t6 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
+		Tarifa t4 = new Tarifa(TipoServico.ALIMENTACAO, 40.00);
+		Tarifa t5 = new Tarifa(TipoServico.ALIMENTACAO, 50.80);
+		Tarifa t6 = new Tarifa(TipoServico.LIMPEZA, 120.00);
 
-		TarifaDTO t7 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
-		TarifaDTO t8 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
-		TarifaDTO t9 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
+		Tarifa t7 = new Tarifa(TipoServico.ALIMENTACAO, 40.00);
+		Tarifa t8 = new Tarifa(TipoServico.ALIMENTACAO, 50.80);
+		Tarifa t9 = new Tarifa(TipoServico.LIMPEZA, 120.00);
 
-		TarifaDTO t10 = new TarifaDTO(TipoServico.ALIMENTACAO, 40.00);
-		TarifaDTO t11 = new TarifaDTO(TipoServico.ALIMENTACAO, 50.80);
-		TarifaDTO t12 = new TarifaDTO(TipoServico.LIMPEZA, 120.00);
+		Tarifa t10 = new Tarifa(TipoServico.ALIMENTACAO, 40.00);
+		Tarifa t11 = new Tarifa(TipoServico.ALIMENTACAO, 50.80);
+		Tarifa t12 = new Tarifa(TipoServico.LIMPEZA, 120.00);
 
 		h1.getTarifas().addAll(Arrays.asList(t1, t2, t3));
 		h2.getTarifas().addAll(Arrays.asList(t4, t5, t6));

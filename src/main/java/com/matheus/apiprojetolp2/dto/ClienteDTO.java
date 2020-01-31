@@ -3,6 +3,8 @@ package com.matheus.apiprojetolp2.dto;
 import java.io.Serializable;
 
 import com.matheus.apiprojetolp2.domain.Cliente;
+import com.matheus.apiprojetolp2.domain.Endereco;
+import com.matheus.apiprojetolp2.domain.Telefone;
 
 public class ClienteDTO implements Serializable {
 
@@ -13,8 +15,8 @@ public class ClienteDTO implements Serializable {
 	private String email;
 	private String cpf;
 	private String rg;
-	private EnderecoDTO endereco;
-	private TelefoneDTO telefone;
+	private Endereco endereco;
+	private Telefone telefone;
 
 	public ClienteDTO() {
 
@@ -70,19 +72,19 @@ public class ClienteDTO implements Serializable {
 		this.rg = rg;
 	}
 
-	public EnderecoDTO getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(EnderecoDTO endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
-	public TelefoneDTO getTelefone() {
+	public Telefone getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(TelefoneDTO telefone) {
+	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
 	}
 }

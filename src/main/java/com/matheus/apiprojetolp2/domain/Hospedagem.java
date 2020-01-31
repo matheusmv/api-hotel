@@ -11,8 +11,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.matheus.apiprojetolp2.dto.ClienteSimplesDTO;
-import com.matheus.apiprojetolp2.dto.QuartoDTO;
-import com.matheus.apiprojetolp2.dto.TarifaDTO;
 
 @Document(collection = "hospedagem")
 public class Hospedagem implements Serializable {
@@ -26,9 +24,9 @@ public class Hospedagem implements Serializable {
 
 	private ClienteSimplesDTO cliente;
 
-	private Set<QuartoDTO> quartos = new HashSet<>();
+	private Set<Quarto> quartos = new HashSet<>();
 
-	private List<TarifaDTO> tarifas = new ArrayList<>();
+	private List<Tarifa> tarifas = new ArrayList<>();
 
 	public Hospedagem() {
 
@@ -74,19 +72,19 @@ public class Hospedagem implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public Set<QuartoDTO> getQuartos() {
+	public Set<Quarto> getQuartos() {
 		return quartos;
 	}
 
-	public void setQuartos(Set<QuartoDTO> quartos) {
+	public void setQuartos(Set<Quarto> quartos) {
 		this.quartos = quartos;
 	}
 
-	public List<TarifaDTO> getTarifas() {
+	public List<Tarifa> getTarifas() {
 		return tarifas;
 	}
 
-	public void setTarifas(List<TarifaDTO> tarifas) {
+	public void setTarifas(List<Tarifa> tarifas) {
 		this.tarifas = tarifas;
 	}
 

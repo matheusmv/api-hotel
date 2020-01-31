@@ -1,21 +1,21 @@
-package com.matheus.apiprojetolp2.dto;
+package com.matheus.apiprojetolp2.domain;
 
 import java.io.Serializable;
 
-import com.matheus.apiprojetolp2.dto.enums.TipoCategoria;
+import com.matheus.apiprojetolp2.domain.enums.TipoCategoria;
 
-public class CategoriaDTO implements Serializable {
+public class Categoria implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 	
 	private Integer tipoCategoria;
 
-	public CategoriaDTO() {
+	public Categoria() {
 
 	}
 
-	public CategoriaDTO(TipoCategoria categoria) {
+	public Categoria(TipoCategoria categoria) {
 		setCategoria(categoria);
 	}
 

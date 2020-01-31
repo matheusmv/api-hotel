@@ -1,8 +1,8 @@
-package com.matheus.apiprojetolp2.dto;
+package com.matheus.apiprojetolp2.domain;
 
 import java.io.Serializable;
 
-public class TelefoneDTO implements Serializable {
+public class Telefone implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -10,11 +10,11 @@ public class TelefoneDTO implements Serializable {
 	private String ddd;
 	private String numero;
 
-	public TelefoneDTO() {
+	public Telefone() {
 
 	}
 
-	public TelefoneDTO(String codigo, String ddd, String numero) {
+	public Telefone(String codigo, String ddd, String numero) {
 		super();
 		this.codigo = codigo;
 		this.ddd = ddd;

@@ -7,9 +7,6 @@ import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.matheus.apiprojetolp2.dto.EnderecoDTO;
-import com.matheus.apiprojetolp2.dto.TelefoneDTO;
-
 @Document(collection = "cliente")
 public class Cliente implements Serializable {
 
@@ -21,8 +18,8 @@ public class Cliente implements Serializable {
 	private String email;
 	private String cpf;
 	private String rg;
-	private EnderecoDTO endereco;
-	private TelefoneDTO telefone;
+	private Endereco endereco;
+	private Telefone telefone;
 
 	private Set<Hospedagem> hospedagens = new HashSet<>();
 
@@ -30,8 +27,8 @@ public class Cliente implements Serializable {
 
 	}
 
-	public Cliente(String id, String nome, String email, String cpf, String rg, EnderecoDTO endereco,
-			TelefoneDTO telefone) {
+	public Cliente(String id, String nome, String email, String cpf, String rg, Endereco endereco,
+			Telefone telefone) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -82,19 +79,19 @@ public class Cliente implements Serializable {
 		this.rg = rg;
 	}
 
-	public TelefoneDTO getTelefone() {
+	public Telefone getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(TelefoneDTO telefone) {
+	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
 	}
 
-	public EnderecoDTO getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(EnderecoDTO endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
