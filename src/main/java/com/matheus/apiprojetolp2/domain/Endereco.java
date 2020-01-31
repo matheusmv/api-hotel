@@ -6,11 +6,11 @@ public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String logradouro;
+	private String cep;
+	private String rua;
 	private String numero;
 	private String complemento;
 	private String bairro;
-	private String cep;
 	private String cidade;
 	private String estado;
 
@@ -18,24 +18,32 @@ public class Endereco implements Serializable {
 
 	}
 
-	public Endereco(String logradouro, String numero, String complemento, String bairro, String cep, String cidade,
+	public Endereco(String cep, String rua, String numero, String complemento, String bairro, String cidade,
 			String estado) {
 		super();
-		this.logradouro = logradouro;
+		this.cep = cep;
+		this.rua = rua;
 		this.numero = numero;
 		this.complemento = complemento;
 		this.bairro = bairro;
-		this.cep = cep;
 		this.cidade = cidade;
 		this.estado = estado;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
+	public String getCep() {
+		return cep;
 	}
 
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
 	}
 
 	public String getNumero() {
@@ -60,14 +68,6 @@ public class Endereco implements Serializable {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
 	}
 
 	public String getCidade() {
