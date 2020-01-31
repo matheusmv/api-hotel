@@ -1,8 +1,6 @@
 package com.matheus.apiprojetolp2.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,10 +17,8 @@ public class Cliente implements Serializable {
 	private String senha;
 	private String cpf;
 	private String rg;
-	private Endereco endereco;
 	private Telefone telefone;
-
-	private Set<Hospedagem> hospedagens = new HashSet<>();
+	private Endereco endereco;
 
 	public Cliente() {
 
@@ -103,14 +99,6 @@ public class Cliente implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
-
-	public Set<Hospedagem> getHospedagens() {
-		return hospedagens;
-	}
-
-	public void setHospedagens(Set<Hospedagem> hospedagens) {
-		this.hospedagens = hospedagens;
 	}
 
 	@Override

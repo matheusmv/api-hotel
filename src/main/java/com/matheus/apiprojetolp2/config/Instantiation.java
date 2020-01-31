@@ -97,13 +97,6 @@ public class Instantiation implements CommandLineRunner {
 
 		hospedagemRespository.saveAll(Arrays.asList(h1, h2, h3, h4));
 
-		/* HOSPEDAGENS DE CADA CLIENTE */
-
-		jose.getHospedagens().add(h4);
-		jose.getHospedagens().add(h1);
-		maria.getHospedagens().add(h2);
-		alex.getHospedagens().add(h2);
-
 		/* SALVANDO OS DADOS NO BD */
 
 		clienteRepository.saveAll(Arrays.asList(jose, maria, alex));
