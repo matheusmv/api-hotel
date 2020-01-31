@@ -13,6 +13,7 @@ public class ClienteDTO implements Serializable {
 	private String id;
 	private String nome;
 	private String email;
+	private String senha;
 	private String cpf;
 	private String rg;
 	private Endereco endereco;
@@ -54,6 +55,14 @@ public class ClienteDTO implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getCpf() {
