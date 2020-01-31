@@ -27,6 +27,7 @@ public class ClienteDTO implements Serializable {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.email = obj.getEmail();
+		this.senha = obj.getSenha();
 		this.cpf = obj.getCpf();
 		this.rg = obj.getRg();
 		this.endereco = obj.getEndereco();
