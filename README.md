@@ -51,6 +51,8 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 >   - com.matheus.apiprojetolp2
 >     - ApiProjetoLp2Application.java
 
+5. Utilize os endpoints através do navegador ou Postman.
+
 - ### Opção 2: **Gerando o .jar e executando a aplicação no terminal**
 
 > - Ao optar por este método de execução será necessário criar os documentos no banco de dados através de requisições POST ou     diretamente usando o [compass](https://www.mongodb.com/products/compass).
@@ -60,6 +62,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 3. Em api-hotel-projeto-lp2 execute: **./mvnw clean package**
 4. Incie o MongoDB pelo terminal: **mongod**
 5. Execute o .jar: **java -jar target/programa.jar**
+6. Utilize os endpoints através do navegador ou Postman.
 
 ## Endpoints da API
 
