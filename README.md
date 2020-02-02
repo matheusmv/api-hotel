@@ -13,6 +13,9 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 ## Começando
 Em progresso...
 
+## Sobre o projeto
+Em progresso...
+
 ## Equipe de desenvolvimento
 [<img src="https://avatars0.githubusercontent.com/u/51245188?s=460&v=4" width="115"><br><smal>@mathzMV</smal>](https://github.com/mathzMV) 
 | :---: |
