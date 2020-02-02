@@ -73,7 +73,9 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 ## Sobre o projeto
 
-Em progresso...
+> O diagrama está sujeito a alterações.
+
+<img src="https://github.com/mathzMV/api-hotel-projeto-lp2/blob/master/Conceitos.png" width="900">
 
 ## Equipe de desenvolvimento
 
