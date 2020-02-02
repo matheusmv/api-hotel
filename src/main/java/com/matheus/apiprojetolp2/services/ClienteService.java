@@ -41,7 +41,6 @@ public class ClienteService {
 		newObj.setEmail(obj.getEmail());
 		newObj.setCpf(obj.getCpf());
 		newObj.setRg(obj.getRg());
-		newObj.setEndereco(obj.getEndereco());
 		newObj.setTelefone(obj.getTelefone());
 	}
 
@@ -52,6 +51,6 @@ public class ClienteService {
 
 	public Cliente fromDTO(ClienteDTO obj) {
 		return new Cliente(null, obj.getNome(), obj.getEmail(), obj.getSenha(), obj.getCpf(), obj.getRg(),
-				obj.getEndereco(), obj.getTelefone());
+				obj.getTelefone());
 	}
 }

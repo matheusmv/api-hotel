@@ -18,14 +18,12 @@ public class Cliente implements Serializable {
 	private String cpf;
 	private String rg;
 	private Telefone telefone;
-	private Endereco endereco;
 
 	public Cliente() {
 
 	}
 
-	public Cliente(String id, String nome, String email, String senha, String cpf, String rg, Endereco endereco,
-			Telefone telefone) {
+	public Cliente(String id, String nome, String email, String senha, String cpf, String rg, Telefone telefone) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -33,7 +31,6 @@ public class Cliente implements Serializable {
 		this.senha = senha;
 		this.cpf = cpf;
 		this.rg = rg;
-		this.endereco = endereco;
 		this.telefone = telefone;
 	}
 
@@ -91,14 +88,6 @@ public class Cliente implements Serializable {
 
 	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
 	}
 
 	@Override

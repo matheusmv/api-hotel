@@ -8,7 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import com.matheus.apiprojetolp2.domain.Cliente;
-import com.matheus.apiprojetolp2.domain.Endereco;
 import com.matheus.apiprojetolp2.domain.Hospedagem;
 import com.matheus.apiprojetolp2.domain.Quarto;
 import com.matheus.apiprojetolp2.domain.Tarifa;
@@ -55,15 +54,13 @@ public class Instantiation implements CommandLineRunner {
 		/* CRIANDO CLIENTES */
 
 		Cliente jose = new Cliente(null, "jose", "jose@gmail.com", "12345", "3216549877", "9876543217",
-				new Endereco("A", "111", "AA", "Bairro A", "62800000", "Aracati", "CE"),
+
 				new Telefone("55", "88", "911111111"));
 
 		Cliente maria = new Cliente(null, "maria", "maria@gmail.com", "12345", "4891560236", "9846513204",
-				new Endereco("B", "222", "BB", "Bairro B", "62800000", "Aracati", "CE"),
 				new Telefone("55", "88", "922222222"));
 
 		Cliente alex = new Cliente(null, "alex", "alex@gmail.com", "12345", "9517536548", "7539518522",
-				new Endereco("C", "333", "CC", "Bairro C", "62800000", "Aracati", "CE"),
 				new Telefone("55", "88", "933333333"));
 
 		/* SALVANDO OS DADOS NO BD */
