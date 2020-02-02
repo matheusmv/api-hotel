@@ -27,9 +27,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 ## Começando (em progresso...)
 
-- ### Opção 1
-
-**Executando a aplicação no Spring Tool Suite**
+- ### Opção 1: **Executando a aplicação no Spring Tool Suite**
 
 - [Spring Tools](https://spring.io/tools)
 
@@ -53,9 +51,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 >   - com.matheus.apiprojetolp2
 >     - ApiProjetoLp2Application.java
 
-- ### Opção 2
-
-**Gerando o .jar e executando a aplicação no terminal**
+- ### Opção 2: **Gerando o .jar e executando a aplicação no terminal**
 
 > - Ao optar por este método de execução será necessário criar os documentos no banco de dados através de requisições POST ou     diretamente usando o [compass](https://www.mongodb.com/products/compass).
 
