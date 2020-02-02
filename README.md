@@ -27,7 +27,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 ## Começando (em progresso...)
 
-> ### Opção 1
+- ### Opção 1
 
 **Executando a aplicação no Spring Tool Suite**
 
@@ -53,7 +53,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 >   - com.matheus.apiprojetolp2
 >     - ApiProjetoLp2Application.java
 
-> ### Opção 2
+- ### Opção 2
 
 **Gerando o .jar e executando a aplicação no terminal**
 
