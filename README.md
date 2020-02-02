@@ -25,7 +25,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 - [MongoDB](https://www.mongodb.com/)
 - [Postman](https://www.getpostman.com/)
 
-## Começando (em progresso...)
+## Começando
 
 - ### Opção 1: **Executando a aplicação no Spring Tool Suite**
 
@@ -64,14 +64,14 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 5. Execute o .jar: **java -jar target/programa.jar**
 6. Utilize os endpoints através do navegador(GET) ou Postman(GET, POST, PUT, DELETE).
 
-## Endpoints da API
+## Endpoints da API (em progresso...)
 
 | Postman            | Navegador | Clientes                   |  Quartos                    | Hospedagens                   |
 |--------------------|-----------|----------------------------|-----------------------------|-------------------------------|
 | GET                | GET       | localhost:8080/clientes    |  localhost:8080/quartos     | localhost:8080/hospedagens    |
 | GET,POST,PUT,DELETE| GET       | localhost:8080/clientes/id |  localhost:8080/quartos/id  | localhost:8080/hospedagens/id |
 
-## Sobre o projeto
+## Sobre o projeto  (em progresso...)
 
 > O diagrama está sujeito a alterações.
 
