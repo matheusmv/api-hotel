@@ -1,5 +1,7 @@
 # Hotel API Service
 
+> Status: _em desenvolvimento._
+
 API para lidar com gerenciamento de Hotelaria. Este aplicativo foi escrito usando o framework Spring Boot Java.
 
 ## Progresso
