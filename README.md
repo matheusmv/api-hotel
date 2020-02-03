@@ -6,7 +6,7 @@ API para lidar com gerenciamento de Hotelaria. Este aplicativo foi escrito usand
 
 ## Progresso
 
-- [x] Implemetação básica da API
+- [ ] Implemetação básica da API
   - [x] /clientes
   - [x] /clientes/id
   - [x] /hospedagens
