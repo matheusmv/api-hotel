@@ -2,12 +2,14 @@ package com.matheus.apiprojetolp2.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.matheus.apiprojetolp2.domain.Hospedagem;
 import com.matheus.apiprojetolp2.domain.Quarto;
-import com.matheus.apiprojetolp2.domain.Tarifa;
+import com.matheus.apiprojetolp2.domain.Servico;
 
 public class HospedagemDTO implements Serializable {
 
@@ -21,7 +23,7 @@ public class HospedagemDTO implements Serializable {
 
 	private Set<Quarto> quartos = new HashSet<>();
 
-	private Set<Tarifa> tarifas = new HashSet<>();
+	private List<Servico> tarifas = new ArrayList<>();
 
 	public HospedagemDTO() {
 
@@ -61,7 +63,7 @@ public class HospedagemDTO implements Serializable {
 		return quartos;
 	}
 
-	public Set<Tarifa> getTarifas() {
+	public List<Servico> getTarifas() {
 		return tarifas;
 	}
 }

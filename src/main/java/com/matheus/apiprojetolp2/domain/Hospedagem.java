@@ -23,7 +23,7 @@ public class Hospedagem implements Serializable {
 
 	private Set<Quarto> quartos = new HashSet<>();
 
-	private List<Tarifa> tarifas = new ArrayList<>();
+	private List<Servico> tarifas = new ArrayList<>();
 
 	public Hospedagem() {
 
@@ -77,11 +77,11 @@ public class Hospedagem implements Serializable {
 		this.quartos = quartos;
 	}
 
-	public List<Tarifa> getTarifas() {
+	public List<Servico> getTarifas() {
 		return tarifas;
 	}
 
-	public void setTarifas(List<Tarifa> tarifas) {
+	public void setTarifas(List<Servico> tarifas) {
 		this.tarifas = tarifas;
 	}
 

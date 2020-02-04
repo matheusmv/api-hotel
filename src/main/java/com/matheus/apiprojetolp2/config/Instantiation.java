@@ -10,14 +10,14 @@ import org.springframework.context.annotation.Configuration;
 import com.matheus.apiprojetolp2.domain.Cliente;
 import com.matheus.apiprojetolp2.domain.Hospedagem;
 import com.matheus.apiprojetolp2.domain.Quarto;
-import com.matheus.apiprojetolp2.domain.Tarifa;
+import com.matheus.apiprojetolp2.domain.Servico;
 import com.matheus.apiprojetolp2.domain.Telefone;
 import com.matheus.apiprojetolp2.domain.enums.StatusDoQuarto;
 import com.matheus.apiprojetolp2.domain.enums.TipoCategoria;
-import com.matheus.apiprojetolp2.domain.enums.TipoServico;
 import com.matheus.apiprojetolp2.repositories.ClienteRepository;
 import com.matheus.apiprojetolp2.repositories.HospedagemRepository;
 import com.matheus.apiprojetolp2.repositories.QuartoRepository;
+import com.matheus.apiprojetolp2.repositories.ServicoRepository;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
@@ -30,6 +30,9 @@ public class Instantiation implements CommandLineRunner {
 
 	@Autowired
 	private HospedagemRepository hospedagemRespository;
+
+	@Autowired
+	private ServicoRepository servicoRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -51,10 +54,19 @@ public class Instantiation implements CommandLineRunner {
 
 		quartoRespository.saveAll(Arrays.asList(num1, num2, num3, num4));
 
+		/* CRIANDO SERVIÇOS */
+
+		Servico alimentacao = new Servico(null, "Alimentação", "Serviço de quarto", 40.00);
+		Servico limpeza = new Servico(null, "Limpeza", "Limpeza do quarto", 120.00);
+		Servico manutencao = new Servico(null, "Manutenção", "Manutenção do quarto", 80.00);
+
+		/* SALVANDO OS DADOS NO BD */
+
+		servicoRepository.saveAll(Arrays.asList(alimentacao, limpeza, manutencao));
+
 		/* CRIANDO CLIENTES */
 
 		Cliente jose = new Cliente(null, "jose", "jose@gmail.com", "12345", "3216549877", "9876543217",
-
 				new Telefone("55", "88", "911111111"));
 
 		Cliente maria = new Cliente(null, "maria", "maria@gmail.com", "12345", "4891560236", "9846513204",
@@ -91,30 +103,15 @@ public class Instantiation implements CommandLineRunner {
 
 		/* ADICIONANDO TARIFAS PARA CADA HOSPEDAGEM */
 
-		Tarifa t1 = new Tarifa(TipoServico.ALIMENTACAO, 40.00);
-		Tarifa t2 = new Tarifa(TipoServico.ALIMENTACAO, 50.80);
-		Tarifa t3 = new Tarifa(TipoServico.LIMPEZA, 120.00);
-
-		Tarifa t4 = new Tarifa(TipoServico.ALIMENTACAO, 40.00);
-		Tarifa t5 = new Tarifa(TipoServico.ALIMENTACAO, 50.80);
-		Tarifa t6 = new Tarifa(TipoServico.LIMPEZA, 120.00);
-
-		Tarifa t7 = new Tarifa(TipoServico.ALIMENTACAO, 40.00);
-		Tarifa t8 = new Tarifa(TipoServico.ALIMENTACAO, 50.80);
-		Tarifa t9 = new Tarifa(TipoServico.LIMPEZA, 120.00);
-
-		Tarifa t10 = new Tarifa(TipoServico.ALIMENTACAO, 40.00);
-		Tarifa t11 = new Tarifa(TipoServico.ALIMENTACAO, 50.80);
-		Tarifa t12 = new Tarifa(TipoServico.LIMPEZA, 120.00);
-
-		h1.getTarifas().addAll(Arrays.asList(t1, t2, t3));
-		h2.getTarifas().addAll(Arrays.asList(t4, t5, t6));
-		h3.getTarifas().addAll(Arrays.asList(t7, t8, t9));
-		h4.getTarifas().addAll(Arrays.asList(t10, t11, t12));
+		h1.getTarifas().addAll(Arrays.asList(alimentacao, limpeza, manutencao));
+		h2.getTarifas().addAll(Arrays.asList(alimentacao, limpeza, manutencao));
+		h3.getTarifas().addAll(Arrays.asList(alimentacao, limpeza, manutencao));
+		h4.getTarifas().addAll(Arrays.asList(alimentacao, limpeza, manutencao));
 
 		/* SALVANDO OS DADOS NO BD */
 
 		hospedagemRespository.saveAll(Arrays.asList(h1, h2, h3, h4));
 		clienteRepository.saveAll(Arrays.asList(jose, maria, alex));
+
 	}
 }
