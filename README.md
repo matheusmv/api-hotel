@@ -79,7 +79,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 > O diagrama está sujeito a alterações.
 
-<img src="https://github.com/mathzMV/api-hotel-projeto-lp2/blob/master/Conceitos.png" width="900">
+<img src="https://github.com/mathzMV/api-hotel-projeto-lp2/blob/master/Conceitos.jpeg" width="900">
 
 ## Equipe de desenvolvimento
 
