@@ -70,10 +70,10 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 ## Endpoints da API (em progresso...)
 
-| Postman            | Navegador | Clientes                   |  Quartos                    | Hospedagens                   |
-|--------------------|-----------|----------------------------|-----------------------------|-------------------------------|
-| GET                | GET       | localhost:8080/clientes    |  localhost:8080/quartos     | localhost:8080/hospedagens    |
-| GET,POST,PUT,DELETE| GET       | localhost:8080/clientes/id |  localhost:8080/quartos/id  | localhost:8080/hospedagens/id |
+| **Clientes**               |  **Quartos**                | **Hospedagens**               | **Serviços**                 |
+|----------------------------|-----------------------------|-------------------------------|------------------------------|
+| localhost:8080/clientes    |  localhost:8080/quartos     | localhost:8080/hospedagens    |localhost:8080/hospedagens    |
+| localhost:8080/clientes/id |  localhost:8080/quartos/id  | localhost:8080/hospedagens/id |localhost:8080/hospedagens/id |
 
 ## Sobre o projeto  (em progresso...)
 
