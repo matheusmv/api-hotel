@@ -72,8 +72,8 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 | **Clientes**               |  **Quartos**                | **Hospedagens**               | **Serviços**                 |
 |----------------------------|-----------------------------|-------------------------------|------------------------------|
-| localhost:8080/clientes    |  localhost:8080/quartos     | localhost:8080/hospedagens    |localhost:8080/hospedagens    |
-| localhost:8080/clientes/id |  localhost:8080/quartos/id  | localhost:8080/hospedagens/id |localhost:8080/hospedagens/id |
+| localhost:8080/clientes    |  localhost:8080/quartos     | localhost:8080/hospedagens    |localhost:8080/servicos       |
+| localhost:8080/clientes/id |  localhost:8080/quartos/id  | localhost:8080/hospedagens/id |localhost:8080/servicos/id    |
 
 ## Sobre o projeto  (em progresso...)
 
