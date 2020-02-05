@@ -75,12 +75,6 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 | /clientes    | /quartos    | /hospedagens    | /servicos    |
 | /clientes/id | /quartos/id | /hospedagens/id | /servicos/id |
 
-## Sobre o projeto  (em progresso...)
-
-> O diagrama está sujeito a alterações.
-
-<img src="https://github.com/mathzMV/api-hotel-projeto-lp2/blob/master/Conceitos.jpeg" width="900">
-
 ## Equipe de desenvolvimento
 
 [<img src="https://avatars0.githubusercontent.com/u/51245188?s=460&v=4" width="115"><br><smal>@matheusmv</smal>](https://github.com/matheusmv)
