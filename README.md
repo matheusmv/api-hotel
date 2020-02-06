@@ -13,8 +13,8 @@ API para lidar com gerenciamento de Hotelaria. Este aplicativo foi escrito usand
   - [x] /hospedagens/id
   - [x] /quartos
   - [x] /quartos/id
-  - [ ] /servicos
-  - [ ] /servicos/id
+  - [x] /servicos
+  - [x] /servicos/id
 - [ ] Testar endpoints da API
 - [ ] Autenticação de usuários - JWT
 - [ ] Imagens dos quartos
