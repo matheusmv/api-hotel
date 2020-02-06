@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.matheus.apiprojetolp2.domain.Servico;
+import com.matheus.apiprojetolp2.dto.ServicoDTO;
 import com.matheus.apiprojetolp2.repositories.ServicoRepository;
 import com.matheus.apiprojetolp2.services.exception.ObjectNotFoundException;
 
@@ -44,5 +45,9 @@ public class ServicoService {
 	public void delete(String id) {
 		findById(id);
 		servicoRepository.deleteById(id);
+	}
+	
+	public Servico fromDTO(ServicoDTO obj) {
+		return new Servico(null, obj.getNome(), obj.getDescricao(), obj.getCusto());
 	}
 }
