@@ -42,6 +42,7 @@ public class Instantiation implements CommandLineRunner {
 		clienteRepository.deleteAll();
 		quartoRespository.deleteAll();
 		hospedagemRespository.deleteAll();
+		servicoRepository.deleteAll();
 
 		/* CRIANDO QUARTOS */
 
