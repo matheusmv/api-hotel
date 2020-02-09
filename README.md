@@ -12,7 +12,6 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 - [Maven](https://maven.apache.org/download.cgi)
 - [Git](https://git-scm.com/downloads)
 - [MongoDB](https://www.mongodb.com/)
-- [Postman](https://www.getpostman.com/)
 
 ## Começando
 
