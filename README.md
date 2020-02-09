@@ -20,7 +20,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 - [Spring Tools](https://spring.io/tools)
 
-1. git clone https://github.com/mathzMV/api-hotel-projeto-lp2.git
+1. git clone
 2. Execute o Spring Tool e importe o projeto:
 
 > 1. File
@@ -46,7 +46,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 > - Ao optar por este método de execução será necessário criar os documentos no banco de dados através de requisições POST ou     diretamente usando o [compass](https://www.mongodb.com/products/compass).
 
-1. git clone https://github.com/mathzMV/api-hotel-projeto-lp2.git
+1. git clone
 2. remova a pasta: src/main/java/com/matheus/apiprojetolp2/config (temporário)
 3. Em api-hotel-projeto-lp2 execute: **./mvnw clean package**
 4. Incie o MongoDB pelo terminal: **mongod**
