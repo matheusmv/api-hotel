@@ -4,21 +4,6 @@
 
 API para lidar com gerenciamento de Hotelaria. Este aplicativo foi escrito usando o framework Spring Boot Java.
 
-## Progresso
-
-- [ ] Implemetação básica da API
-  - [x] /clientes
-  - [x] /clientes/id
-  - [x] /hospedagens
-  - [x] /hospedagens/id
-  - [x] /quartos
-  - [x] /quartos/id
-  - [x] /servicos
-  - [x] /servicos/id
-- [ ] Testar endpoints da API
-- [ ] Autenticação de usuários - JWT
-- [ ] Imagens dos quartos
-
 ## Exigências
 
 Para executar a API localmente, você precisará do seguinte instalado em sua máquina:
