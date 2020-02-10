@@ -47,7 +47,7 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 1. git clone
 2. remova a pasta: src/main/java/com/matheus/apiprojetolp2/config (temporário)
-3. Em api-hotel-projeto-lp2 execute: **./mvnw clean package**
+3. Em /api-hotel-projeto-lp2 execute: **./mvnw clean package**
 4. Incie o MongoDB pelo terminal: **mongod**
 5. Execute o .jar: **java -jar target/programa.jar**
 6. Utilize os endpoints através do navegador(GET) ou Postman(GET, POST, PUT, DELETE).
