@@ -42,6 +42,7 @@ public class ClienteService {
 		newObj.setCpf(obj.getCpf());
 		newObj.setRg(obj.getRg());
 		newObj.setTelefone(obj.getTelefone());
+		newObj.setEndereco(obj.getEndereco());
 	}
 
 	public void delete(String id) {
@@ -51,6 +52,6 @@ public class ClienteService {
 
 	public Cliente fromDTO(ClienteDTO obj) {
 		return new Cliente(null, obj.getNome(), obj.getEmail(), obj.getSenha(), obj.getCpf(), obj.getRg(),
-				obj.getTelefone());
+				obj.getTelefone(), obj.getEndereco());
 	}
 }
