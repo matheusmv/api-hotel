@@ -63,5 +63,5 @@ Para executar a API localmente, você precisará do seguinte instalado em sua m�
 
 [<img src="https://avatars0.githubusercontent.com/u/51245188?s=460&v=4" width="115"><br><smal>@matheusmv</smal>](https://github.com/matheusmv)
 [<img src="https://avatars2.githubusercontent.com/u/32533017?s=460&v=4" width="115"><br><smal>@robsonsants</smal>](https://github.com/robsonsants)
-[<img src="https://avatars2.githubusercontent.com/u/55503643?s=460&v=4" width="115"><br><smal>@jailsonbezerra</smal>](https://github.com/jailsonbezerra)|
+[<img src="https://avatars2.githubusercontent.com/u/55503643?s=460&v=4" width="115"><br><smal>@jailsonbezerra</smal>](https://github.com/jailsonbezerra)
 | :---: | :---: | :---: |
