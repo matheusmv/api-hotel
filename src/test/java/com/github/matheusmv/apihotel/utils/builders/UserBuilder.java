@@ -1,5 +1,6 @@
 package com.github.matheusmv.apihotel.utils.builders;
 
+import com.github.matheusmv.apihotel.domain.Profile;
 import com.github.matheusmv.apihotel.domain.User;
 
 import java.time.LocalDateTime;
@@ -13,10 +14,17 @@ public class UserBuilder {
     private Boolean enabled;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private Profile profile;
 
     public UserBuilder() {
+        this.id = 1L;
+        this.email = "undefined";
+        this.password = "undefined";
+        this.locked = true;
+        this.enabled = false;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+        this.profile = new Profile();
     }
 
     public UserBuilder id(Long id) {
@@ -54,7 +62,16 @@ public class UserBuilder {
         return this;
     }
 
+    public UserBuilder profile(Profile profile) {
+        this.profile = profile;
+        return this;
+    }
+
     public User build() {
-        return new User(id, email, password, locked, enabled, createdAt, updatedAt);
+        var user = new User(id, email, password, locked, enabled, createdAt, updatedAt);
+
+        user.setProfile(profile);
+
+        return user;
     }
 }
