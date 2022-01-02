@@ -3,7 +3,7 @@ package com.github.matheusmv.apihotel.utils.builders;
 import com.github.matheusmv.apihotel.domain.Profile;
 import com.github.matheusmv.apihotel.domain.User;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public class UserBuilder {
 
@@ -12,8 +12,8 @@ public class UserBuilder {
     private String password;
     private Boolean locked;
     private Boolean enabled;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Instant createdAt;
+    private Instant updatedAt;
     private Profile profile;
 
     public UserBuilder() {
@@ -22,8 +22,8 @@ public class UserBuilder {
         this.password = "undefined";
         this.locked = true;
         this.enabled = false;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
+        this.createdAt = Instant.now();
+        this.updatedAt = Instant.now();
         this.profile = new Profile();
     }
 
@@ -52,12 +52,12 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder createdAt(LocalDateTime createdAt) {
+    public UserBuilder createdAt(Instant createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public UserBuilder updatedAt(LocalDateTime updatedAt) {
+    public UserBuilder updatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }

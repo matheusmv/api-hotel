@@ -4,7 +4,7 @@ import com.github.matheusmv.apihotel.utils.builders.ProfileBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -20,8 +20,8 @@ public class ProfileTest {
         var firstName = "first name";
         var lastName = "last name";
         var photoUrl = "http://photos.com/0SdAskaf254zaFa4";
-        var createdAt = LocalDateTime.now();
-        var updatedAt = LocalDateTime.now();
+        var createdAt = Instant.now();
+        var updatedAt = Instant.now();
 
         var profile = new ProfileBuilder()
                 .id(id)

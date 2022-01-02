@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
@@ -30,10 +30,10 @@ public class Profile {
     private String photoUrl;
 
     @Column(columnDefinition = "datetime default now()")
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     @Column(columnDefinition = "datetime default now()")
-    private LocalDateTime updatedAt;
+    private Instant updatedAt;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
@@ -48,8 +48,8 @@ public class Profile {
             String firstName,
             String lastName,
             String photoUrl,
-            LocalDateTime createdAt,
-            LocalDateTime updatedAt
+            Instant createdAt,
+            Instant updatedAt
     ) {
         this.id = id;
         this.firstName = firstName;
@@ -91,19 +91,19 @@ public class Profile {
         this.photoUrl = photoUrl;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 

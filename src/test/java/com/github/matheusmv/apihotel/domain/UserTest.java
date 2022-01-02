@@ -4,7 +4,7 @@ import com.github.matheusmv.apihotel.utils.builders.UserBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -21,8 +21,8 @@ public class UserTest {
         var password = "password";
         var locked = true;
         var enabled = false;
-        var createdAt = LocalDateTime.now();
-        var updatedAt = LocalDateTime.now();
+        var createdAt = Instant.now();
+        var updatedAt = Instant.now();
 
         var user = new UserBuilder()
                 .id(id)
