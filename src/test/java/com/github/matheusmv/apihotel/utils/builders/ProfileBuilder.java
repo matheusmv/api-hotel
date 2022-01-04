@@ -61,8 +61,11 @@ public class ProfileBuilder {
     }
 
     public Profile build() {
-        var profile = new Profile(id, firstName, lastName, photoUrl, createdAt, updatedAt);
+        var profile = new Profile(id, firstName, lastName);
 
+        profile.setPhotoUrl(photoUrl);
+        profile.setCreatedAt(createdAt);
+        profile.setUpdatedAt(updatedAt);
         profile.setUser(user);
 
         return profile;

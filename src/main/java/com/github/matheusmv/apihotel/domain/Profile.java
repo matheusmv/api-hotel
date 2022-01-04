@@ -43,20 +43,10 @@ public class Profile {
 
     }
 
-    public Profile(
-            Long id,
-            String firstName,
-            String lastName,
-            String photoUrl,
-            Instant createdAt,
-            Instant updatedAt
-    ) {
+    public Profile(Long id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.photoUrl = photoUrl;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public Long getId() {

@@ -34,7 +34,12 @@ public class ProfileTest {
 
         assertAll("tests for Profile entity",
                 () -> assertDoesNotThrow((ThrowingSupplier<Profile>) Profile::new),
-                () -> assertDoesNotThrow(() -> new Profile(id, firstName, lastName, photoUrl, createdAt, updatedAt)),
+                () -> assertDoesNotThrow(() -> {
+                    var prf = new Profile(id, firstName, lastName);
+                    prf.setPhotoUrl(photoUrl);
+                    prf.setCreatedAt(createdAt);
+                    prf.setUpdatedAt(updatedAt);
+                }),
                 () -> assertThat(id, is(equalTo(profile.getId()))),
                 () -> assertThat(firstName, is(equalTo(profile.getFirstName()))),
                 () -> assertThat(lastName, is(equalTo(profile.getLastName()))),
