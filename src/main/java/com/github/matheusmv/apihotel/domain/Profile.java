@@ -46,8 +46,7 @@ public class Profile {
     @MapsId
     private User user;
 
-    public Profile(Long id, String firstName, String lastName) {
-        this.id = id;
+    public Profile(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
