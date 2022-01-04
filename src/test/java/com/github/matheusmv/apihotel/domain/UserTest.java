@@ -48,7 +48,8 @@ public class UserTest {
         assertAll("tests for User entity",
                 () -> assertDoesNotThrow((ThrowingSupplier<User>) User::new),
                 () -> assertDoesNotThrow(() -> {
-                    var usr = new User(id, email, password);
+                    var usr = new User(email, password);
+                    usr.setId(id);
                     usr.setLocked(locked);
                     usr.setEnabled(enabled);
                     usr.setCreatedAt(createdAt);

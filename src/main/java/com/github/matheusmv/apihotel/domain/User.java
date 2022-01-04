@@ -54,8 +54,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Accommodation> accommodations = new ArrayList<>();
 
-    public User(Long id, String email, String password) {
-        this.id = id;
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
         this.locked = true;

@@ -78,8 +78,9 @@ public class UserBuilder {
     }
 
     public User build() {
-        var user = new User(id, email, password);
+        var user = new User(email, password);
 
+        user.setId(id);
         user.setLocked(locked);
         user.setEnabled(enabled);
         user.setCreatedAt(createdAt);
