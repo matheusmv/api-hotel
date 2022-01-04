@@ -38,8 +38,7 @@ public class RoomService {
     @ManyToOne(fetch = FetchType.LAZY)
     private Accommodation accommodation;
 
-    public RoomService(Long id, String description, Double cost, Instant requestDate) {
-        this.id = id;
+    public RoomService(String description, Double cost, Instant requestDate) {
         this.description = description;
         this.cost = cost;
         this.requestDate = requestDate;

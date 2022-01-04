@@ -5,6 +5,7 @@ import com.github.matheusmv.apihotel.domain.enums.RoomCategory;
 import com.github.matheusmv.apihotel.domain.enums.RoomStatus;
 import com.github.matheusmv.apihotel.utils.builders.AccommodationBuilder;
 import com.github.matheusmv.apihotel.utils.builders.RoomBuilder;
+import com.github.matheusmv.apihotel.utils.builders.RoomServiceBuilder;
 import com.github.matheusmv.apihotel.utils.builders.UserBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
@@ -33,7 +34,7 @@ public class AccommodationTest {
                 new RoomBuilder().id(2L).category(RoomCategory.STANDARD).status(RoomStatus.AVAILABLE).cost(90.00).build()
         );
         var roomServices = List.of(
-                new RoomService(1L, "food", 25.0, Instant.now())
+                new RoomServiceBuilder().id(1L).description("food").cost(25.0).build()
         );
         var user = new UserBuilder().build();
 

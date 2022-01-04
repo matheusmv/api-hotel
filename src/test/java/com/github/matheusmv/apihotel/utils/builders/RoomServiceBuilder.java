@@ -47,8 +47,9 @@ public class RoomServiceBuilder {
     }
 
     public RoomService build() {
-        var roomService = new RoomService(id, description, cost, requestDate);
+        var roomService = new RoomService(description, cost, requestDate);
 
+        roomService.setId(id);
         roomService.setAccommodation(accommodation);
 
         return roomService;

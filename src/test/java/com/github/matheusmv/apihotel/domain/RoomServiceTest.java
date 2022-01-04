@@ -34,7 +34,8 @@ public class RoomServiceTest {
         assertAll("tests for RoomService entity",
                 () -> assertDoesNotThrow((ThrowingSupplier<RoomService>) RoomService::new),
                 () -> assertDoesNotThrow(() -> {
-                    var rs = new RoomService(id, description, cost, requestDate);
+                    var rs = new RoomService(description, cost, requestDate);
+                    rs.setId(id);
                     rs.setAccommodation(accommodation);
                 }),
                 () -> assertThat(id, is(equalTo(roomService.getId()))),
