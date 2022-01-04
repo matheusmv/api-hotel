@@ -42,7 +42,7 @@ public class Profile {
     @Column(columnDefinition = "datetime default now()")
     private Instant updatedAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @MapsId
     private User user;
 
