@@ -45,22 +45,11 @@ public class User {
 
     }
 
-    public User(
-            Long id,
-            String email,
-            String password,
-            Boolean locked,
-            Boolean enabled,
-            Instant createdAt,
-            Instant updatedAt
-    ) {
+    public User(Long id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.locked = locked;
-        this.enabled = enabled;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.locked = true;
     }
 
     public Long getId() {

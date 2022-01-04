@@ -68,8 +68,12 @@ public class UserBuilder {
     }
 
     public User build() {
-        var user = new User(id, email, password, locked, enabled, createdAt, updatedAt);
+        var user = new User(id, email, password);
 
+        user.setLocked(locked);
+        user.setEnabled(enabled);
+        user.setCreatedAt(createdAt);
+        user.setUpdatedAt(updatedAt);
         user.setProfile(profile);
 
         return user;
