@@ -69,8 +69,9 @@ public class AccommodationBuilder {
     }
 
     public Accommodation build() {
-        var accommodation = new Accommodation(id, status, checkIn, checkOut);
+        var accommodation = new Accommodation(status, checkIn, checkOut);
 
+        accommodation.setId(id);
         accommodation.setRooms(rooms);
         accommodation.setRoomServices(roomServices);
         accommodation.setUser(user);

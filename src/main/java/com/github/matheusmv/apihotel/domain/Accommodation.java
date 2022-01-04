@@ -71,8 +71,7 @@ public class Accommodation {
     )
     private User user;
 
-    public Accommodation(Long id, AccommodationStatus status, Instant checkIn, Instant checkOut) {
-        this.id = id;
+    public Accommodation(AccommodationStatus status, Instant checkIn, Instant checkOut) {
         this.status = status;
         this.checkIn = checkIn;
         this.checkOut = checkOut;

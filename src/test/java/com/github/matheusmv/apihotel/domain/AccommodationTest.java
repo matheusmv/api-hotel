@@ -50,7 +50,8 @@ public class AccommodationTest {
         assertAll("tests for Accommodation entity",
                 () -> assertDoesNotThrow((ThrowingSupplier<Accommodation>) Accommodation::new),
                 () -> assertDoesNotThrow(() -> {
-                    var acc = new Accommodation(id, status, checkIn, checkOut);
+                    var acc = new Accommodation(status, checkIn, checkOut);
+                    acc.setId(id);
                     acc.getRooms().addAll(rooms);
                     acc.getRoomServices().addAll(roomServices);
                     acc.setUser(user);
