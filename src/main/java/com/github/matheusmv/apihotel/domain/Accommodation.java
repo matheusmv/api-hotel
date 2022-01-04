@@ -1,8 +1,12 @@
 package com.github.matheusmv.apihotel.domain;
 
+import com.github.matheusmv.apihotel.domain.enums.AccommodationStatus;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +31,10 @@ public class Accommodation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(20)", nullable = false)
+    private AccommodationStatus status;
 
     @Column(columnDefinition = "datetime default now()")
     private Instant checkIn;
@@ -61,8 +69,9 @@ public class Accommodation {
 
     }
 
-    public Accommodation(Long id, Instant checkIn, Instant checkOut) {
+    public Accommodation(Long id, AccommodationStatus status, Instant checkIn, Instant checkOut) {
         this.id = id;
+        this.status = status;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
@@ -73,6 +82,14 @@ public class Accommodation {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public AccommodationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AccommodationStatus status) {
+        this.status = status;
     }
 
     public Instant getCheckIn() {

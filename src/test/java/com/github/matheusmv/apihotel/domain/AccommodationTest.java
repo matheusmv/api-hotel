@@ -1,5 +1,6 @@
 package com.github.matheusmv.apihotel.domain;
 
+import com.github.matheusmv.apihotel.domain.enums.AccommodationStatus;
 import com.github.matheusmv.apihotel.domain.enums.RoomCategory;
 import com.github.matheusmv.apihotel.domain.enums.RoomStatus;
 import com.github.matheusmv.apihotel.utils.builders.AccommodationBuilder;
@@ -23,6 +24,7 @@ public class AccommodationTest {
     @Test
     void testAccommodationDefaultInstantiation() {
         var id = 1L;
+        var status = AccommodationStatus.CONFIRMED;
         var checkIn = Instant.now();
         var checkOut = Instant.now().plus(Duration.ofDays(2));
         var rooms = Set.of(
@@ -36,6 +38,7 @@ public class AccommodationTest {
 
         var accommodation = new AccommodationBuilder()
                 .id(id)
+                .status(status)
                 .checkIn(checkIn)
                 .checkOut(checkOut)
                 .rooms(rooms)
@@ -46,12 +49,13 @@ public class AccommodationTest {
         assertAll("tests for Accommodation entity",
                 () -> assertDoesNotThrow((ThrowingSupplier<Accommodation>) Accommodation::new),
                 () -> assertDoesNotThrow(() -> {
-                    var acc = new Accommodation(id, checkIn, checkOut);
+                    var acc = new Accommodation(id, status, checkIn, checkOut);
                     acc.getRooms().addAll(rooms);
                     acc.getRoomServices().addAll(roomServices);
                     acc.setUser(user);
                 }),
                 () -> assertThat(id, is(equalTo(accommodation.getId()))),
+                () -> assertThat(status, is(equalTo(accommodation.getStatus()))),
                 () -> assertThat(checkIn, is(equalTo(accommodation.getCheckIn()))),
                 () -> assertThat(checkOut, is(equalTo(accommodation.getCheckOut()))),
                 () -> assertThat(rooms, is(equalTo(accommodation.getRooms()))),

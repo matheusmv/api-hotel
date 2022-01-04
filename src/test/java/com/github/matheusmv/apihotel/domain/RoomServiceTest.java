@@ -1,10 +1,10 @@
 package com.github.matheusmv.apihotel.domain;
 
+import com.github.matheusmv.apihotel.utils.builders.AccommodationBuilder;
 import com.github.matheusmv.apihotel.utils.builders.RoomServiceBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
-import java.time.Duration;
 import java.time.Instant;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,7 +21,7 @@ public class RoomServiceTest {
         var description = "food";
         var cost = 30.0;
         var requestDate = Instant.now();
-        var accommodation = new Accommodation(1L, Instant.now(), Instant.now().plus(Duration.ofDays(7)));
+        var accommodation = new AccommodationBuilder().build();
 
         var roomService = new RoomServiceBuilder()
                 .id(id)

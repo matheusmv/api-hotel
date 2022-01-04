@@ -2,12 +2,11 @@ package com.github.matheusmv.apihotel.domain;
 
 import com.github.matheusmv.apihotel.domain.enums.RoomCategory;
 import com.github.matheusmv.apihotel.domain.enums.RoomStatus;
+import com.github.matheusmv.apihotel.utils.builders.AccommodationBuilder;
 import com.github.matheusmv.apihotel.utils.builders.RoomBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,7 +24,8 @@ public class RoomTest {
         var status = RoomStatus.AVAILABLE;
         var cost = 170.00;
         var accommodations = Set.of(
-                new Accommodation(1L, Instant.now(), Instant.now().plus(Duration.ofDays(7)))
+                new AccommodationBuilder().id(1L).build(),
+                new AccommodationBuilder().id(2L).build()
         );
 
         var room = new RoomBuilder()

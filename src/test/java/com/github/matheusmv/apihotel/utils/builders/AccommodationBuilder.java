@@ -4,6 +4,7 @@ import com.github.matheusmv.apihotel.domain.Accommodation;
 import com.github.matheusmv.apihotel.domain.Room;
 import com.github.matheusmv.apihotel.domain.RoomService;
 import com.github.matheusmv.apihotel.domain.User;
+import com.github.matheusmv.apihotel.domain.enums.AccommodationStatus;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -15,6 +16,7 @@ import java.util.Set;
 public class AccommodationBuilder {
 
     private Long id;
+    private AccommodationStatus status;
     private Instant checkIn;
     private Instant checkOut;
     private Set<Room> rooms;
@@ -23,6 +25,7 @@ public class AccommodationBuilder {
 
     public AccommodationBuilder() {
         this.id = 1L;
+        this.status = AccommodationStatus.PRE_RESERVATION;
         this.checkIn = Instant.now();
         this.checkOut = Instant.now().plus(Duration.ofDays(7));
         this.rooms = new HashSet<>();
@@ -32,6 +35,11 @@ public class AccommodationBuilder {
 
     public AccommodationBuilder id(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public AccommodationBuilder status(AccommodationStatus status) {
+        this.status = status;
         return this;
     }
 
@@ -61,7 +69,7 @@ public class AccommodationBuilder {
     }
 
     public Accommodation build() {
-        var accommodation = new Accommodation(id, checkIn, checkOut);
+        var accommodation = new Accommodation(id, status, checkIn, checkOut);
 
         accommodation.setRooms(rooms);
         accommodation.setRoomServices(roomServices);
