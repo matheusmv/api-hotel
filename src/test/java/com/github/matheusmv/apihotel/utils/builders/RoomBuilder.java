@@ -50,8 +50,9 @@ public class RoomBuilder {
     }
 
     public Room build() {
-        var room = new Room(id, category, status, cost);
+        var room = new Room(category, status, cost);
 
+        room.setId(id);
         room.setAccommodations(accommodations);
 
         return room;

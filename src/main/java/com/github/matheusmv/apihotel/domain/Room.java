@@ -44,8 +44,7 @@ public class Room {
     @ManyToMany(mappedBy = "rooms")
     private Set<Accommodation> accommodations = new HashSet<>();
 
-    public Room(Long id, RoomCategory category, RoomStatus status, Double cost) {
-        this.id = id;
+    public Room(RoomCategory category, RoomStatus status, Double cost) {
         this.category = category;
         this.status = status;
         this.cost = cost;

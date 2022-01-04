@@ -38,7 +38,11 @@ public class RoomTest {
 
         assertAll("tests for Room entity",
                 () -> assertDoesNotThrow((ThrowingSupplier<Room>) Room::new),
-                () -> assertDoesNotThrow(() -> new Room(id, category, status, cost).setAccommodations(accommodations)),
+                () -> assertDoesNotThrow(() -> {
+                    var r = new Room(category, status, cost);
+                    r.setId(id);
+                    r.setAccommodations(accommodations);
+                }),
                 () -> assertThat(id, is(equalTo(room.getId()))),
                 () -> assertThat(category, is(equalTo(room.getCategory()))),
                 () -> assertThat(status, is(equalTo(room.getStatus()))),
