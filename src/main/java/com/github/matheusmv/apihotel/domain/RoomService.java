@@ -2,9 +2,11 @@ package com.github.matheusmv.apihotel.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.Instant;
 import java.util.Objects;
@@ -25,6 +27,9 @@ public class RoomService {
 
     @Column(columnDefinition = "datetime default now()")
     private Instant requestDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Accommodation accommodation;
 
     public RoomService() {
 
@@ -67,6 +72,14 @@ public class RoomService {
 
     public void setRequestDate(Instant requestDate) {
         this.requestDate = requestDate;
+    }
+
+    public Accommodation getAccommodation() {
+        return accommodation;
+    }
+
+    public void setAccommodation(Accommodation accommodation) {
+        this.accommodation = accommodation;
     }
 
     @Override

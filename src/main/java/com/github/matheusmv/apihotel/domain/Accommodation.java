@@ -9,9 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -38,6 +41,13 @@ public class Accommodation {
             inverseJoinColumns = @JoinColumn(name = "room_id")
     )
     private Set<Room> rooms = new HashSet<>();
+
+    @OneToMany(
+            mappedBy = "accommodation",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<RoomService> roomServices = new ArrayList<>();
 
     public Accommodation() {
 
@@ -79,6 +89,14 @@ public class Accommodation {
 
     public void setRooms(Set<Room> rooms) {
         this.rooms = rooms;
+    }
+
+    public List<RoomService> getRoomServices() {
+        return roomServices;
+    }
+
+    public void setRoomServices(List<RoomService> roomServices) {
+        this.roomServices = roomServices;
     }
 
     @Override

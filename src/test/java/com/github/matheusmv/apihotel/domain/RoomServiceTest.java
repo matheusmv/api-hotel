@@ -4,6 +4,7 @@ import com.github.matheusmv.apihotel.utils.builders.RoomServiceBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
+import java.time.Duration;
 import java.time.Instant;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,21 +21,27 @@ public class RoomServiceTest {
         var description = "food";
         var cost = 30.0;
         var requestDate = Instant.now();
+        var accommodation = new Accommodation(1L, Instant.now(), Instant.now().plus(Duration.ofDays(7)));
 
         var roomService = new RoomServiceBuilder()
                 .id(id)
                 .description(description)
                 .cost(cost)
                 .requestDate(requestDate)
+                .accommodation(accommodation)
                 .build();
 
         assertAll("tests for RoomService entity",
                 () -> assertDoesNotThrow((ThrowingSupplier<RoomService>) RoomService::new),
-                () -> assertDoesNotThrow(() -> new RoomService(id, description, cost, requestDate)),
+                () -> assertDoesNotThrow(() -> {
+                    var rs = new RoomService(id, description, cost, requestDate);
+                    rs.setAccommodation(accommodation);
+                }),
                 () -> assertThat(id, is(equalTo(roomService.getId()))),
                 () -> assertThat(description, is(equalTo(roomService.getDescription()))),
                 () -> assertThat(cost, is(equalTo(roomService.getCost()))),
-                () -> assertThat(requestDate, is(equalTo(roomService.getRequestDate())))
+                () -> assertThat(requestDate, is(equalTo(roomService.getRequestDate()))),
+                () -> assertThat(accommodation, is(equalTo(roomService.getAccommodation())))
         );
     }
 }

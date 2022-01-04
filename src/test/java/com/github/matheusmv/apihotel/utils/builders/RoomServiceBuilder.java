@@ -1,5 +1,6 @@
 package com.github.matheusmv.apihotel.utils.builders;
 
+import com.github.matheusmv.apihotel.domain.Accommodation;
 import com.github.matheusmv.apihotel.domain.RoomService;
 
 import java.time.Instant;
@@ -10,12 +11,14 @@ public class RoomServiceBuilder {
     private String description;
     private Double cost;
     private Instant requestDate;
+    private Accommodation accommodation;
 
     public RoomServiceBuilder() {
         this.id = 1L;
         this.description = "undefined";
         this.cost = 50.25;
         this.requestDate = Instant.now();
+        this.accommodation = new Accommodation();
     }
 
     public RoomServiceBuilder id(Long id) {
@@ -38,7 +41,16 @@ public class RoomServiceBuilder {
         return this;
     }
 
+    public RoomServiceBuilder accommodation(Accommodation accommodation) {
+        this.accommodation = accommodation;
+        return this;
+    }
+
     public RoomService build() {
-        return new RoomService(id, description, cost, requestDate);
+        var roomService = new RoomService(id, description, cost, requestDate);
+
+        roomService.setAccommodation(accommodation);
+
+        return roomService;
     }
 }

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.function.ThrowingSupplier;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -27,21 +28,30 @@ public class AccommodationTest {
                 new Room(1L, RoomCategory.STANDARD, RoomStatus.AVAILABLE, 100.0),
                 new Room(2L, RoomCategory.STANDARD, RoomStatus.AVAILABLE, 90.0)
         );
+        var roomServices = List.of(
+                new RoomService(1L, "food", 25.0, Instant.now())
+        );
 
         var accommodation = new AccommodationBuilder()
                 .id(id)
                 .checkIn(checkIn)
                 .checkOut(checkOut)
                 .rooms(rooms)
+                .roomServices(roomServices)
                 .build();
 
         assertAll("tests for Accommodation entity",
                 () -> assertDoesNotThrow((ThrowingSupplier<Accommodation>) Accommodation::new),
-                () -> assertDoesNotThrow(() -> new Accommodation(id, checkIn, checkOut).setRooms(rooms)),
+                () -> assertDoesNotThrow(() -> {
+                    var acc = new Accommodation(id, checkIn, checkOut);
+                    acc.getRooms().addAll(rooms);
+                    acc.getRoomServices().addAll(roomServices);
+                }),
                 () -> assertThat(id, is(equalTo(accommodation.getId()))),
                 () -> assertThat(checkIn, is(equalTo(accommodation.getCheckIn()))),
                 () -> assertThat(checkOut, is(equalTo(accommodation.getCheckOut()))),
-                () -> assertThat(rooms, is(equalTo(accommodation.getRooms())))
+                () -> assertThat(rooms, is(equalTo(accommodation.getRooms()))),
+                () -> assertThat(roomServices, is(equalTo(accommodation.getRoomServices())))
         );
     }
 }
