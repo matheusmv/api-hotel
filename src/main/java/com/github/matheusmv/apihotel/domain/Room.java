@@ -2,6 +2,9 @@ package com.github.matheusmv.apihotel.domain;
 
 import com.github.matheusmv.apihotel.domain.enums.RoomCategory;
 import com.github.matheusmv.apihotel.domain.enums.RoomStatus;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +21,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "rooms")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Room {
 
     @Id
@@ -38,55 +44,11 @@ public class Room {
     @ManyToMany(mappedBy = "rooms")
     private Set<Accommodation> accommodations = new HashSet<>();
 
-    public Room() {
-
-    }
-
     public Room(Long id, RoomCategory category, RoomStatus status, Double cost) {
         this.id = id;
         this.category = category;
         this.status = status;
         this.cost = cost;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public RoomCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(RoomCategory category) {
-        this.category = category;
-    }
-
-    public RoomStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(RoomStatus status) {
-        this.status = status;
-    }
-
-    public Double getCost() {
-        return cost;
-    }
-
-    public void setCost(Double cost) {
-        this.cost = cost;
-    }
-
-    public Set<Accommodation> getAccommodations() {
-        return accommodations;
-    }
-
-    public void setAccommodations(Set<Accommodation> accommodations) {
-        this.accommodations = accommodations;
     }
 
     @Override

@@ -1,5 +1,9 @@
 package com.github.matheusmv.apihotel.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +17,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "room_services")
+@NoArgsConstructor
+@Getter
+@Setter
 public class RoomService {
 
     @Id
@@ -31,55 +38,11 @@ public class RoomService {
     @ManyToOne(fetch = FetchType.LAZY)
     private Accommodation accommodation;
 
-    public RoomService() {
-
-    }
-
     public RoomService(Long id, String description, Double cost, Instant requestDate) {
         this.id = id;
         this.description = description;
         this.cost = cost;
         this.requestDate = requestDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getCost() {
-        return cost;
-    }
-
-    public void setCost(Double cost) {
-        this.cost = cost;
-    }
-
-    public Instant getRequestDate() {
-        return requestDate;
-    }
-
-    public void setRequestDate(Instant requestDate) {
-        this.requestDate = requestDate;
-    }
-
-    public Accommodation getAccommodation() {
-        return accommodation;
-    }
-
-    public void setAccommodation(Accommodation accommodation) {
-        this.accommodation = accommodation;
     }
 
     @Override

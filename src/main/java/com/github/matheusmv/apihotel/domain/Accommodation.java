@@ -1,6 +1,9 @@
 package com.github.matheusmv.apihotel.domain;
 
 import com.github.matheusmv.apihotel.domain.enums.AccommodationStatus;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,6 +29,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "accommodations")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Accommodation {
 
     @Id
@@ -65,71 +71,11 @@ public class Accommodation {
     )
     private User user;
 
-    public Accommodation() {
-
-    }
-
     public Accommodation(Long id, AccommodationStatus status, Instant checkIn, Instant checkOut) {
         this.id = id;
         this.status = status;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public AccommodationStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(AccommodationStatus status) {
-        this.status = status;
-    }
-
-    public Instant getCheckIn() {
-        return checkIn;
-    }
-
-    public void setCheckIn(Instant checkIn) {
-        this.checkIn = checkIn;
-    }
-
-    public Instant getCheckOut() {
-        return checkOut;
-    }
-
-    public void setCheckOut(Instant checkOut) {
-        this.checkOut = checkOut;
-    }
-
-    public Set<Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(Set<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    public List<RoomService> getRoomServices() {
-        return roomServices;
-    }
-
-    public void setRoomServices(List<RoomService> roomServices) {
-        this.roomServices = roomServices;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     @Override
