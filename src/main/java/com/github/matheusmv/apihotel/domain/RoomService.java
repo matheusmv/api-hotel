@@ -35,7 +35,7 @@ public class RoomService {
     @Column(columnDefinition = "datetime default now()")
     private Instant requestDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Accommodation accommodation;
 
     public RoomService(String description, Double cost, Instant requestDate) {
