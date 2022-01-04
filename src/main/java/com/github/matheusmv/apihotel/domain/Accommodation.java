@@ -3,12 +3,14 @@ package com.github.matheusmv.apihotel.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.Instant;
@@ -48,6 +50,12 @@ public class Accommodation {
             orphanRemoval = true
     )
     private List<RoomService> roomServices = new ArrayList<>();
+
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            optional = false
+    )
+    private User user;
 
     public Accommodation() {
 
@@ -97,6 +105,14 @@ public class Accommodation {
 
     public void setRoomServices(List<RoomService> roomServices) {
         this.roomServices = roomServices;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

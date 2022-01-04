@@ -1,9 +1,12 @@
 package com.github.matheusmv.apihotel.utils.builders;
 
+import com.github.matheusmv.apihotel.domain.Accommodation;
 import com.github.matheusmv.apihotel.domain.Profile;
 import com.github.matheusmv.apihotel.domain.User;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserBuilder {
 
@@ -15,6 +18,7 @@ public class UserBuilder {
     private Instant createdAt;
     private Instant updatedAt;
     private Profile profile;
+    private List<Accommodation> accommodations;
 
     public UserBuilder() {
         this.id = 1L;
@@ -25,6 +29,7 @@ public class UserBuilder {
         this.createdAt = Instant.now();
         this.updatedAt = Instant.now();
         this.profile = new Profile();
+        this.accommodations = new ArrayList<>();
     }
 
     public UserBuilder id(Long id) {
@@ -67,6 +72,11 @@ public class UserBuilder {
         return this;
     }
 
+    public UserBuilder accommodations(List<Accommodation> accommodations) {
+        this.accommodations = accommodations;
+        return this;
+    }
+
     public User build() {
         var user = new User(id, email, password);
 
@@ -75,6 +85,7 @@ public class UserBuilder {
         user.setCreatedAt(createdAt);
         user.setUpdatedAt(updatedAt);
         user.setProfile(profile);
+        user.setAccommodations(accommodations);
 
         return user;
     }

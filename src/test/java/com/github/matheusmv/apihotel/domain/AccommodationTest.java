@@ -3,6 +3,7 @@ package com.github.matheusmv.apihotel.domain;
 import com.github.matheusmv.apihotel.domain.enums.RoomCategory;
 import com.github.matheusmv.apihotel.domain.enums.RoomStatus;
 import com.github.matheusmv.apihotel.utils.builders.AccommodationBuilder;
+import com.github.matheusmv.apihotel.utils.builders.UserBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
@@ -31,6 +32,7 @@ public class AccommodationTest {
         var roomServices = List.of(
                 new RoomService(1L, "food", 25.0, Instant.now())
         );
+        var user = new UserBuilder().build();
 
         var accommodation = new AccommodationBuilder()
                 .id(id)
@@ -38,6 +40,7 @@ public class AccommodationTest {
                 .checkOut(checkOut)
                 .rooms(rooms)
                 .roomServices(roomServices)
+                .user(user)
                 .build();
 
         assertAll("tests for Accommodation entity",
@@ -46,12 +49,14 @@ public class AccommodationTest {
                     var acc = new Accommodation(id, checkIn, checkOut);
                     acc.getRooms().addAll(rooms);
                     acc.getRoomServices().addAll(roomServices);
+                    acc.setUser(user);
                 }),
                 () -> assertThat(id, is(equalTo(accommodation.getId()))),
                 () -> assertThat(checkIn, is(equalTo(accommodation.getCheckIn()))),
                 () -> assertThat(checkOut, is(equalTo(accommodation.getCheckOut()))),
                 () -> assertThat(rooms, is(equalTo(accommodation.getRooms()))),
-                () -> assertThat(roomServices, is(equalTo(accommodation.getRoomServices())))
+                () -> assertThat(roomServices, is(equalTo(accommodation.getRoomServices()))),
+                () -> assertThat(user, is(equalTo(accommodation.getUser())))
         );
     }
 }

@@ -3,6 +3,7 @@ package com.github.matheusmv.apihotel.utils.builders;
 import com.github.matheusmv.apihotel.domain.Accommodation;
 import com.github.matheusmv.apihotel.domain.Room;
 import com.github.matheusmv.apihotel.domain.RoomService;
+import com.github.matheusmv.apihotel.domain.User;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -18,6 +19,7 @@ public class AccommodationBuilder {
     private Instant checkOut;
     private Set<Room> rooms;
     private List<RoomService> roomServices;
+    private User user;
 
     public AccommodationBuilder() {
         this.id = 1L;
@@ -25,6 +27,7 @@ public class AccommodationBuilder {
         this.checkOut = Instant.now().plus(Duration.ofDays(7));
         this.rooms = new HashSet<>();
         this.roomServices = new ArrayList<>();
+        this.user = new User();
     }
 
     public AccommodationBuilder id(Long id) {
@@ -52,11 +55,17 @@ public class AccommodationBuilder {
         return this;
     }
 
+    public AccommodationBuilder user(User user) {
+        this.user = user;
+        return this;
+    }
+
     public Accommodation build() {
         var accommodation = new Accommodation(id, checkIn, checkOut);
 
         accommodation.setRooms(rooms);
         accommodation.setRoomServices(roomServices);
+        accommodation.setUser(user);
 
         return accommodation;
     }
