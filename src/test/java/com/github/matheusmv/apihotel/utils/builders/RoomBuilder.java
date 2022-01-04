@@ -1,8 +1,12 @@
 package com.github.matheusmv.apihotel.utils.builders;
 
+import com.github.matheusmv.apihotel.domain.Accommodation;
 import com.github.matheusmv.apihotel.domain.Room;
 import com.github.matheusmv.apihotel.domain.enums.RoomCategory;
 import com.github.matheusmv.apihotel.domain.enums.RoomStatus;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class RoomBuilder {
 
@@ -10,12 +14,14 @@ public class RoomBuilder {
     private RoomCategory category;
     private RoomStatus status;
     private Double cost;
+    private Set<Accommodation> accommodations;
 
     public RoomBuilder() {
         this.id = 1L;
         this.category = RoomCategory.STANDARD;
         this.status = RoomStatus.AVAILABLE;
         this.cost = 150.30;
+        this.accommodations = new HashSet<>();
     }
 
     public RoomBuilder id(Long id) {
@@ -38,7 +44,16 @@ public class RoomBuilder {
         return this;
     }
 
+    public RoomBuilder accommodations(Set<Accommodation> accommodations) {
+        this.accommodations = accommodations;
+        return this;
+    }
+
     public Room build() {
-        return new Room(id, category, status, cost);
+        var room = new Room(id, category, status, cost);
+
+        room.setAccommodations(accommodations);
+
+        return room;
     }
 }

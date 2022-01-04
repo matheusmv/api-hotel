@@ -10,8 +10,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "rooms")
@@ -31,6 +34,9 @@ public class Room {
 
     @Column(nullable = false)
     private Double cost;
+
+    @ManyToMany(mappedBy = "rooms")
+    private Set<Accommodation> accommodations = new HashSet<>();
 
     public Room() {
 
@@ -73,6 +79,14 @@ public class Room {
 
     public void setCost(Double cost) {
         this.cost = cost;
+    }
+
+    public Set<Accommodation> getAccommodations() {
+        return accommodations;
+    }
+
+    public void setAccommodations(Set<Accommodation> accommodations) {
+        this.accommodations = accommodations;
     }
 
     @Override

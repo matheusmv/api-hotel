@@ -1,13 +1,19 @@
 package com.github.matheusmv.apihotel.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "accommodations")
@@ -22,6 +28,16 @@ public class Accommodation {
 
     @Column(columnDefinition = "datetime default now()")
     private Instant checkOut;
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "accommodation_room",
+            joinColumns = @JoinColumn(name = "accommodation_id"),
+            inverseJoinColumns = @JoinColumn(name = "room_id")
+    )
+    private Set<Room> rooms = new HashSet<>();
 
     public Accommodation() {
 
@@ -55,6 +71,14 @@ public class Accommodation {
 
     public void setCheckOut(Instant checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
     }
 
     @Override
